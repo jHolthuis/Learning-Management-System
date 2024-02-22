@@ -1,0 +1,1 @@
+<p class="text-center text-gray-500 font-display">&copy; {{ date('Y') }} Learning Management System Hacklab --- Made by J.Holthuis </P>
