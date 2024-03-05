@@ -9,4 +9,7 @@ class PageController extends Controller
     public function home() {
         return view('pages.welcome');
     }
+    public function login() {
+        return view('pages.login');
+    }
 }

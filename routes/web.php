@@ -15,3 +15,5 @@ use App\Http\Controllers\Pagecontroller;
 */
 
 Route::get('/',[PageController::class, 'home']);
+
+Route::get('login',[Pagecontroller::class, 'login'])->name('login');

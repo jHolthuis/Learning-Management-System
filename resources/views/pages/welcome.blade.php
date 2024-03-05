@@ -5,7 +5,7 @@
 
 <h1 class="text-gray-50 font-display">Hello Hacklab</h1>
 
-<p class="text-gray-50 font-display">what does this look like</p>
-
+<p class="text-gray-50 font-display">This is the welcome page, only for people who have logged in</p>
+<p class="text-gray-50 font-display">So first let's create a login page!</p>
 
 @endsection
