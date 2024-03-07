@@ -16,6 +16,7 @@ module.exports = {
       white: colors.white,
       green: colors.green,
       blue: colors.blue,
+      sky: colors.sky,
       red: colors.red,
       yellow: colors.yellow,
       hacklab_green:  '#5ab576',

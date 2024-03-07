@@ -1,1 +1,1 @@
-<h1 class="text-hacklab_green font-display">Main menu here</h1>
+<header class="text-hacklab_green bg-gray-900 shadow-md fixed left-0 top-0 z-50 w-full p-4 font-display">Hacklab</header>

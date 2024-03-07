@@ -10,6 +10,6 @@ class PageController extends Controller
         return view('pages.welcome');
     }
     public function login() {
-        return view('pages.login');
+        return view('auth.login');
     }
 }
