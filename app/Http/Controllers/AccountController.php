@@ -27,7 +27,17 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email:filter|unique:users,email',
+            'password' => 'required|confirmed',
+            'phone_number' => 'tel',
+            'date_of_birth' => 'date',
+            'home_town' => 'string|required',
+            'start_date' =>  'date',
+        ]);
+
+        return redirect('home')->with('succes', 'Account has been made!');
     }
 
     /**
