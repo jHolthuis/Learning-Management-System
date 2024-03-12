@@ -12,4 +12,10 @@ class PageController extends Controller
     public function login() {
         return view('auth.login');
     }
+    public function  register(){
+        return view('auth.register');
+    }
+    public function create_user() {
+        return view('pages.new_user');
+    }
 }
