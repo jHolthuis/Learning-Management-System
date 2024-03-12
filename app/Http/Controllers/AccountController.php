@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Models\User;
 use Illuminate\Http\Request;
+
 
 class AccountController extends Controller
 {
@@ -27,17 +29,20 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validated_data = $request->validate([
             'name' => 'required|string',
             'email' => 'required|email:filter|unique:users,email',
-            'password' => 'required|confirmed',
-            'phone_number' => 'tel',
+            'password' => 'required',
+            'phone_number' => 'required',
             'date_of_birth' => 'date',
-            'home_town' => 'string|required',
+            'hometown' => 'string|required',
             'start_date' =>  'date',
         ]);
 
-        return redirect('home')->with('succes', 'Account has been made!');
+        User::create($validated_data);
+
+    
+        return redirect('/')->with('succes', 'Account has been made!');
     }
 
     /**
