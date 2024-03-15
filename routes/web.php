@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\AccountController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Pagecontroller;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Pagecontroller;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes

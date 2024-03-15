@@ -16,14 +16,12 @@
         <h2 class="text-white text-3xl pl-4 pt-10">Inloggen</h2><br>
         @csrf
 
-        <label for="email"></label>
         <input
             class="bg-gray-500/50 text-white focus:ring-1 focus:outline-none p-3 my-10 block w-96 m-4
             border-2 border-gray-400 focus:border-none rounded-sm focus:ring-hacklab_green focus:outline-1
             outline-hacklab_green placeholder-gray-400 focus:placeholder-hacklab_green"
             type="email" name="email" id="email" placeholder="E-mailadres" required>
 
-        <label for="password"></label>
         <input
             class="bg-gray-500/50 text-white focus:ring-1 focus:outline-none p-3 my-12 block w-96 m-4
             border-2 border-gray-400 focus:border-none rounded-sm focus:ring-hacklab_green focus:outline-1
