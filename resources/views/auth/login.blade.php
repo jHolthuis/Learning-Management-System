@@ -2,6 +2,10 @@
 @extends('layout.app')
 @section('content')
 
+    <?php
+    $currentPage = '/login';
+    ?>
+
     @if ($errors->any())
         <div>
             <ul>
