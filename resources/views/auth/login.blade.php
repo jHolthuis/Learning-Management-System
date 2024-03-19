@@ -3,7 +3,7 @@
 @section('content')
 
     <?php
-    $currentPage = '/login';
+    $currentPage = 'login';
     ?>
 
     @if ($errors->any())

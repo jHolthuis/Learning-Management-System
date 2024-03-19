@@ -9,7 +9,7 @@ class PageController extends Controller
     public function home() {
         return view('pages.welcome');
     }
-    public function login() {
+    public function showLoginForm() {
         return view('auth.login');
     }
     public function  register(){
