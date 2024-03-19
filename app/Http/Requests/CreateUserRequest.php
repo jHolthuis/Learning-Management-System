@@ -21,14 +21,15 @@ class CreateUserRequest extends FormRequest
      */
     public function rules(): array
     {
+
         return [
                 'name' => 'required|string',
                 'email' => 'required|email:filter|unique:users,email',
                 'password' => 'required',
                 'phone_number' => 'required',
                 'date_of_birth' => 'date',
-                'home_town' => 'string|required',
+                'hometown' => 'string|required',
                 'start_date' =>  'date',
-        ];
+            ];
     }
 }

@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUserRequest;
 use Illuminate\Http\Request;
-use App\Models\User;
 use Illuminate\Http\RedirectResponse;
+use App\Models\User;
 
 class AccountController extends Controller
 {
@@ -30,24 +30,17 @@ class AccountController extends Controller
      */
     public function store(CreateUserRequest $request): RedirectResponse
     {
-        $validated = $request->validated();
+        $validated = new User;
+        $validated->name = $request->name;
+        $validated->email = $request->email;
+        $validated->password = $request->password;
+        $validated->phone_number = $request->phone_number;
+        $validated->date_of_birth = $request->date_of_birth;
+        $validated->home_town = $request->hometown;
+        $validated->start_date = $request->start_date;
+        $validated->save();
 
-        // $user = new User();
-        $validated = $request->safe()->only([
-            'name', 'email', 'password', 'phone_number', 'date_of_birth', 'home_town', 'start_date']);
-        $validated = $request->safe()->except([
-            'name', 'email', 'password', 'phone_number', 'date_of_birth', 'home_town', 'start_date']);
-        // $user->name = $validated_data['name'];
-        // $user->email = $validated_data['email'];
-        // $user->password = $validated_data['password'];
-        // $user->phone_number = $validated_data['phone_number'];
-        // $user->date_of_birth = $validated_data['date_of_birth'];
-        // $user->hometown = $validated_data['home_town'];
-        // $user->start_date = $validated_data['start_date'];
-        // $user->save();
-
-    
-        return redirect('/store')->with('succes', 'Account has been made!');
+        return redirect('/')->with('succes', 'Account has been made!');
     }
 
     /**

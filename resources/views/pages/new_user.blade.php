@@ -1,6 +1,8 @@
 @extends('layout.app')
 @section('content')
-
+    <?php
+    $currentPage = 'create_user';
+    ?>
     @if ($errors->any())
         <div>
             <ul>
@@ -11,7 +13,8 @@
         </div>
     @endif
     <h1 class="text-white text-7xl pl-16 pb-14 pt-6">Hacklab</h1>
-    <form class="bg-gray-900/50 ml-16 border-none block w-5/12 h-4/6" method="POST" action="{{ route('create.user') }}">
+    <form class="bg-gray-900/50 ml-16 border-none block w-5/12 h-4/6" name="create_user_form" method="POST"
+        action="{{ route('store_user') }}">
         <h2 class="text-white text-3xl pl-4 pt-10">Add new user</h2><br>
         @csrf
         <input

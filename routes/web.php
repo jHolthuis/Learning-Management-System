@@ -20,5 +20,5 @@ Route::get('/',[PageController::class, 'home']);
 Route::get('new_user',[PageController::class, 'create_user']);
 Route::get('/login',[PageController::class,'login'])->name('login');
 
-Route::post('/store',[AccountController::class,'store'])->name('create.user');
+Route::post('/store',[AccountController::class,'store'])->name('store_user');
 Route::post('/login',[LoginController::class,'login']);
