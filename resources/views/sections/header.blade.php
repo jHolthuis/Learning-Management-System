@@ -1,4 +1,4 @@
-<header class="text-gray-200 bg-gray-900 shadow-md fixed left-0 top-0 z-50 w-full p-4 font-display
+<header class="text-gray-200 bg-gray-900 shadow-md fixed left-0 top-0 z-49 w-full p-4 font-display
     space-x-12">
     <a href="/">Hacklab logo
         <form action="{{ route('logout') }}" method="POST">
