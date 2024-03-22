@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',[PageController::class, 'home']);
+Route::get('/',[Accountcontroller::class, 'show']);
 Route::get('new_user',[PageController::class, 'create_user']);
 Route::get('login',[LoginController::class,'showloginForm'])->name('login')->middleware('guest');
 

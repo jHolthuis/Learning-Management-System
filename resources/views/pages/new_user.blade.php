@@ -64,7 +64,7 @@
         </label>
 
         <button
-            class="bg-hacklab_green border-none rounded-lg w-40 py-3 ml-52 block tranistion ease-in-out
+            class="bg-hacklab_green border-none rounded-lg w-40 py-3 ml-52 mb-10 block tranistion ease-in-out
             delay-150 duration-200 hover:bg-sky-400 hover:text-white"
             type="submit">Register</button>
     </form>

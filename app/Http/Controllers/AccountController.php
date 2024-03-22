@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUserRequest;
+use App\Models\User;
+use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
-use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class AccountController extends Controller
 {
@@ -46,9 +48,16 @@ class AccountController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+
+     public function show()
     {
-        //
+        if(Auth::check()) {
+            $name = Auth::user()->name;
+        
+        return view('pages.welcome', compact('name'));
+        } else {
+            return redirect()->route('login');
+        }
     }
 
     /**
