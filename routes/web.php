@@ -19,9 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[PageController::class, 'home']);
 Route::get('new_user',[PageController::class, 'create_user']);
 Route::get('login',[LoginController::class,'showloginForm'])->name('login')->middleware('guest');
-Route::get('/dashboard', function () {
-    return 'Dashboard';
-})->middleware('auth');
 
 Route::post('store',[AccountController::class,'store'])->name('store_user');
 Route::post('login',[LoginController::class,'login'])->middleware('guest');
+Route::post('logout',[LoginController::class, 'logout'])->name("logout");
