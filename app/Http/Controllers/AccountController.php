@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUserRequest;
 use App\Models\User;
-use Closure;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -19,6 +19,14 @@ class AccountController extends Controller
         //
     }
 
+    public function showRoles(Request $request)
+    {
+        $roles_table = Role::all();
+
+        return view('pages.edit_user', [
+            'roles' => $roles_table,
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      */
