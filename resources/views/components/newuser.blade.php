@@ -59,11 +59,17 @@
 
         <label class="text-white ml-4 mb-0">Start date
             <input
-                class="bg-gray-500/50 text-white focus:ring-1 focus:outline-none p-3 mt-0 mb-12 block w-96 m-4
+                class="bg-gray-500/50 text-white focus:ring-1 focus:outline-none p-3 mt-0 mb-6 block w-96 m-4
             border-2 border-gray-400 focus:border-none rounded-sm focus:ring-hacklab_green focus:outline-1
             outline-hacklab_green placeholder-gray-400 focus:placeholder-hacklab_green"
                 type="date" name="start_date" id="start_date" placeholder="Start date" required>
         </label>
+        <input
+            class="bg-gray-500/50 text-white focus:ring-1 focus:outline-none ml-4 mb-6
+            border-2 border-gray-400 focus:border-none rounded-sm focus:ring-hacklab_green focus:outline-1
+            outline-hacklab_green placeholder-gray-400 focus:placeholder-hacklab_green"
+            type="checkbox" name="loan_Equipment" id="1" value="1" required>
+        <label for="loan_Equipment" class="text-white ml-4 mb-6">Needs a Loan Laptop</label>
 
         <button
             class="bg-hacklab_green border-none rounded-lg w-40 py-3 ml-52 mb-10 block tranistion ease-in-out
