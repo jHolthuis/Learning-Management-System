@@ -48,6 +48,8 @@ class AccountController extends Controller
         $validated->date_of_birth = $request->date_of_birth;
         $validated->home_town = $request->hometown;
         $validated->start_date = $request->start_date;
+        $validated->role_id = $request->role_id;
+        $validated->loan_laptop = $request->loan_laptop;
         $validated->save();
 
         return redirect('/')->with('succes', 'Account has been made!');

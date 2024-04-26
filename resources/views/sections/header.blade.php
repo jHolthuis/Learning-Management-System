@@ -8,14 +8,10 @@
             delay-150 duration-200 hover:bg-hacklab_green hover:text-gray-200 float-right"
                 type="submit">Logout</button>
         </form>
-        <a class="transition float-right hover:text-hacklab_green delay-150 ease-in-out
-            hover:-translate-y-1 hover:scale-110 <?php if ($currentPage == 'create_user') {
-                echo 'text-hacklab_green';
-            } ?>"
+        <a class="{{ request()->is('new_user') ? 'text-hacklab_green' : 'text-gray-200' }} transition float-right hover:text-hacklab_green delay-150 ease-in-out
+            hover:-translate-y-1 hover:scale-110"
             href="new_user">Create new account
-            <a class="transition float-right hover:text-hacklab_green delay-150 ease-in-out
-                hover:-translate-y-1 hover:scale-110 <?php if ($currentPage == 'home') {
-                    echo 'text-hacklab_green';
-                } ?>"
+            <a class="{{ request()->is('/') ? 'text-hacklab_green' : 'text-gray-200' }} transition float-right hover:text-hacklab_green delay-150 ease-in-out
+            hover:-translate-y-1 hover:scale-110"
                 href="/">Home</a>
 </header>
