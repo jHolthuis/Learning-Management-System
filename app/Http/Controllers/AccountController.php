@@ -23,7 +23,7 @@ class AccountController extends Controller
     {
         $roles_table = Role::all();
 
-        return view('pages.edit_user', [
+        return view('pages.new_user', [
             'roles' => $roles_table,
         ]);
     }
