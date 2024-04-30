@@ -16,4 +16,7 @@ class PageController extends Controller
     public function create_user() {
         return view('pages.new_user');
     }
+    public function account_info() {
+        return view('pages.account_info');
+    }
 }
