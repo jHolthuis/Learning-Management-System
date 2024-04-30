@@ -30,7 +30,7 @@ class CreateUserRequest extends FormRequest
                 'date_of_birth' => 'date',
                 'hometown' => 'string|required',
                 'start_date' =>  'date',
-                'role' => 'required|id|exists:roles,id',
+                'role_id' => 'required|exists:roles,id',
                 'loan_laptop' => 'boolean',
             ];
     }

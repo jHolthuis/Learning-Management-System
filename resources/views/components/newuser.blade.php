@@ -64,11 +64,12 @@
             outline-hacklab_green placeholder-gray-400 focus:placeholder-hacklab_green"
                 type="date" name="start_date" id="start_date" placeholder="Start date" required>
         </label>
+        <input type="hidden" name="loan_laptop" value="0">
         <input
             class="bg-gray-500/50 text-white focus:ring-1 focus:outline-none ml-4 mb-6
             border-2 border-gray-400 focus:border-none rounded-sm focus:ring-hacklab_green focus:outline-1
             outline-hacklab_green placeholder-gray-400 focus:placeholder-hacklab_green"
-            type="checkbox" name="loan_Equipment" id="1" value="1">
+            type="checkbox" name="loan_laptop" id="yes" value="1">
         <label for="loan_Equipment" class="text-white ml-4 mb-6">Needs a Loan Laptop</label>
 
         <button
@@ -76,5 +77,4 @@
             delay-150 duration-200 hover:bg-sky-400 hover:text-white"
             type="submit">Register</button>
     </form>
-
 @endsection
