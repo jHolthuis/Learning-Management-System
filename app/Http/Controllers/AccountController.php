@@ -58,8 +58,13 @@ class AccountController extends Controller
     /**
      * Display the specified resource.
      */
+    public function show(?User $reqUser)
+    {
+        $user = $reqUser->exists ? $reqUser : auth()->user();
 
-     public function show()
+        return view('pages.account_info', compact('user'));
+    }
+     public function name()
     {
         if(Auth::check()) {
             $name = Auth::user()->name;

@@ -13,7 +13,7 @@
         </div>
     @endif
     <h1 class="text-white text-7xl pl-16 pb-14 pt-6">Hacklab</h1>
-    <form class="bg-gray-900/50 ml-16 border-none block w-5/12 h-6/6" name="create_user_form" method="POST"
+    <form class="bg-gray-900/50 ml-16 border-none block w-5/12 h-6/6 pb-1" name="create_user_form" method="POST"
         action="{{ route('store_user') }}">
         <h2 class="text-white text-3xl pl-4 pt-10">Add new user</h2><br>
 
@@ -21,7 +21,7 @@
         <x-role_selector :roles="$roles">
         </x-role_selector>
         <input
-            class="bg-gray-500/50 text-white focus:ring-1 focus:outline-none p-3 my-10 block w-96 m-4
+            class="bg-gray-500/50 text-white focus:ring-1 focus:outline-none p-3 my-10 block w-96 ml-4
             border-2 border-gray-400 focus:border-none rounded-sm focus:ring-hacklab_green focus:outline-1
             outline-hacklab_green placeholder-gray-400 focus:placeholder-hacklab_green"
             type="text" name="name" id="name" placeholder="Name" string required>
@@ -74,7 +74,7 @@
         <label for="loan_Equipment" class="text-white ml-4 mb-6">Needs a Loan Laptop</label>
 
         <button
-            class="bg-hacklab_green border-none rounded-lg w-40 py-3 ml-52 mb-10 block tranistion ease-in-out
+            class="bg-hacklab_green border-none rounded-lg w-40 py-3 ml-52 mb-8 block tranistion ease-in-out
             delay-150 duration-200 hover:bg-sky-400 hover:text-white"
             type="submit">Register</button>
     </form>
