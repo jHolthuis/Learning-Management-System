@@ -78,9 +78,11 @@ class AccountController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(?User $reqUser)
     {
-        //
+        $user = $reqUser->exists ? $reqUser : auth()->user();
+        
+        return view('pages.edit_profile', compact('user'));
     }
 
     /**
