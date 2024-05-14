@@ -20,9 +20,11 @@ Route::get('/',[PageController::class, 'home']);
 Route::get('/',[Accountcontroller::class, 'name']);
 Route::get('new_user', [AccountController::class, 'showRoles'])->name('new_user');
 Route::get('edit_user',[PageController::class, 'create_user']);
-Route::get('edit_profile',[AccountController::class, 'edit'])->name('edit_profile');
 Route::get('login',[LoginController::class,'showloginForm'])->name('login')->middleware('guest');
 Route::get('account_info/{reqUser?}', [AccountController::class, 'show'])->name('account_info');
+Route::get('/edit_profile', [AccountController::class, 'index'])->name('edit_profile.index');
+Route::put('/edit_profile', [AccountController::class, 'edit'])->name('edit_profile.edit');
+
 
 Route::post('store',[AccountController::class,'store'])->name('store_user');
 Route::post('login',[LoginController::class,'login'])->middleware('guest');

@@ -16,7 +16,8 @@ class AccountController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        return view('pages.edit_profile', compact('user'));
     }
 
     public function showRoles(Request $request)
@@ -78,11 +79,24 @@ class AccountController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(?User $reqUser)
+    public function edit(Request $request)
     {
-        $user = $reqUser->exists ? $reqUser : auth()->user();
-        
-        return view('pages.edit_profile', compact('user'));
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email:filter|max:255',
+            'phone_number' => 'required',
+            'date_of_birth' => 'date',
+            'home_town' => 'string',
+        ]);
+        $user = Auth::user();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone_number = $request->phone_number;
+        $user->date_of_birth = $request->date_of_birth;
+        $user->home_town = $request->home_town;
+        $user->save();
+
+        return redirect('account_info')->with('success', 'Your profile has been updated successfully!');
     }
 
     /**
