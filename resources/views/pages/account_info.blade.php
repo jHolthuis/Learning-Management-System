@@ -17,6 +17,12 @@
 
     <div class="bg-gray-900/50 text-gray-50 border-none block p-8 ml-4 w-5/12 h-6/6">
         <p class="text-lg leading-8">
+
+            @if ($user->profile_picture)
+                <img src="{{ asset('storage/' . $user->profile_picture) }}" alt="Profile"
+                    style="width: 100px; height: 120px; position:relative; left:-1cm; top:1cm; float:right;">
+            @endif
+
             Name: {{ $user->name }}
             <br>
             Email: {{ $user->email }}

@@ -87,13 +87,19 @@ class AccountController extends Controller
             'phone_number' => 'required',
             'date_of_birth' => 'date',
             'home_town' => 'string',
+            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+        /** @var /app/User $user*/
         $user = Auth::user();
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone_number = $request->phone_number;
         $user->date_of_birth = $request->date_of_birth;
         $user->home_town = $request->home_town;
+        if ($request->hasFile('profile_picture')) {
+            $filename = $request->file('profile_picture')->store('profile_pictures', 'public');
+            $user->profile_picture = $filename;
+        }
         $user->save();
 
         return redirect('account_info')->with('success', 'Your profile has been updated successfully!');
