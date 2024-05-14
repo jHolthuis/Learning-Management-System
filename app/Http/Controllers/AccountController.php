@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\Auth\CreateUserRequest;
+use App\Http\Requests\Auth\UpdateUserRequest;
 use App\Models\User;
 use App\Models\Role;
 use Illuminate\Http\Request;
@@ -79,16 +80,8 @@ class AccountController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $request)
+    public function edit(UpdateUserRequest $request):RedirectResponse
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email:filter|max:255',
-            'phone_number' => 'required',
-            'date_of_birth' => 'date',
-            'home_town' => 'string',
-            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
         /** @var /app/User $user*/
         $user = Auth::user();
         $user->name = $request->name;

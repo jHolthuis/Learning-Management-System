@@ -39,7 +39,7 @@
             class="bg-gray-500/50 text-white focus:ring-1 focus:outline-none p-3 my-6 block w-96 ml-4
         border-2 border-gray-400 focus:border-none rounded-sm focus:ring-hacklab_green focus:outline-1
         outline-hacklab_green placeholder-gray-400 focus:placeholder-hacklab_green"
-            type="tel" name="phone_number" value="{{ $user->phone_number }}" required><br>
+            type="tel" name="phone_number" value="{{ 0 . $user->phone_number }}" required><br>
 
         <label class="ml-4" for="date_of_birth">Date of Birth</label>
         <input
