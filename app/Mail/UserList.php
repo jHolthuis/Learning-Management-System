@@ -2,24 +2,25 @@
 
 namespace App\Mail;
 
+use App\Models\User;
 use Illuminate\Mail\Mailables\Address;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class OrderShipped extends Mailable
+class UserList extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(public User $user,)
     {
-        //
     }
 
     /**
@@ -43,7 +44,6 @@ class OrderShipped extends Mailable
     {
         return new Content(
             view: 'mail.orders.shipped',
-            text: 'mail.orders.shipped-text'
         );
     }
 
@@ -54,6 +54,10 @@ class OrderShipped extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        return [
+            Attachment::fromPath('/path/to/file')
+                ->as('name.pdf')
+                ->withMime('application/pdf'),
+        ];
     }
 }
