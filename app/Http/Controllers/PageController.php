@@ -27,4 +27,13 @@ class PageController extends Controller
         return view('pages.account_info');
         }
     }
+    public function schedule() {
+        return view('pages.schedule');
+    }
+    public function make_changes() {
+        return view('pages.make_changes');
+    }
+    public function edit_changes() {
+        return view('pages.edit_schedule');
+    }
 }
