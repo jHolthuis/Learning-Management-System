@@ -1,7 +1,7 @@
 @extends('layout.app')
 @section('content')
     <?php
-    $currentPage = 'create_user';
+    $currentPage = 'schedule';
     ?>
     @if ($errors->any())
         <div>

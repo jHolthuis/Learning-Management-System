@@ -36,4 +36,7 @@ class PageController extends Controller
     public function edit_changes() {
         return view('pages.edit_schedule');
     }
+    public function edit_schedule() {
+        return view('pages.edit_schedule');
+    }
 }

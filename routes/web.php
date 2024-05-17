@@ -28,9 +28,11 @@ Route::get('logout',[LoginController::class, 'logout'])->name('logout');
 Route::get('schedule', [PageController::class, 'schedule'])->name('schedule');
 Route::get('make_changes', [PageController::class, 'make_changes'])->name('make_changes');
 Route::get('edit_schedule', [PageController::class, 'edit_schedule'])->name('edit_schedule');
+Route::get('show_schedule', [LessonController::class, "show"])->name('show_schedule');
+
 Route::put('/edit_profile', [AccountController::class, 'edit'])->name('edit_profile.edit');
 
-Route::post('schedule',[LessonController::class, 'store'])->name('store_schedule');
+Route::post('edit_schedule',[LessonController::class, 'store'])->name('store_schedule');
 Route::post('store',[AccountController::class,'store'])->name('store_user');
 Route::post('login',[LoginController::class,'login'])->middleware('guest');
 

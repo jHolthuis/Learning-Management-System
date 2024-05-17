@@ -14,6 +14,7 @@ return new class extends Migration
         schema::create('classrooms', function(Blueprint $table) {
             $table->id()->autoIncrement;
             $table->string('location');
+            $table->timestamps();
         });
     }
 
