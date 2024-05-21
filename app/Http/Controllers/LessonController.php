@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lesson;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+
 
 
 class LessonController extends Controller
 {
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $lessons = new Lesson;
         $lessons->subject_id = $request->subject_id;
@@ -19,7 +21,7 @@ class LessonController extends Controller
         $lessons->day_of_week = $request->day_of_week;
         $lessons->save();
 
-        return redirect()->route('lesson')->with('succes', "Lesson added successfully");
+        return redirect()->route('schedule')->with('succes', "Lesson added successfully");
     }
 
     public function show(Request $request)

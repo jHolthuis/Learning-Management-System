@@ -14,7 +14,7 @@
     @endif
 
     <form class="bg-gray-900/50 ml-16 border-none block w-5/12 h-6/6 pb-1" name="change_schedule_form" method="POST"
-        action="{{ route('edit_schedule') }}">
+        action="{{ route('store_schedule') }}">
         <h2 class="text-white text-3xl pl-4 pt-10">Change Schedule</h2><br>
 
         @csrf

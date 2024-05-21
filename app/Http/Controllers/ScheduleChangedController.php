@@ -18,6 +18,6 @@ class ScheduleChangedController extends Controller
  
         Mail::to($request->user())->send(new ScheduleChanged());
  
-        return redirect('/schedule');
+        return redirect('schedule');
     }
 }
