@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Auth\CreateUserRequest;
 use App\Http\Requests\Auth\UpdateUserRequest;
+use App\Mail\NewUserCreated;
 use App\Models\User;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class AccountController extends Controller
 {
@@ -42,17 +44,20 @@ class AccountController extends Controller
      */
     public function store(CreateUserRequest $request): RedirectResponse
     {
-        $validated = new User;
-        $validated->name = $request->name;
-        $validated->email = $request->email;
-        $validated->password = $request->password;
-        $validated->phone_number = $request->phone_number;
-        $validated->date_of_birth = $request->date_of_birth;
-        $validated->home_town = $request->hometown;
-        $validated->start_date = $request->start_date;
-        $validated->role_id = $request->role_id;
-        $validated->loan_laptop = $request->loan_laptop;
-        $validated->save();
+        $users = new User;
+        $users->name = $request->name;
+        $users->email = $request->email;
+        $users->password = $request->password;
+        $users->phone_number = $request->phone_number;
+        $users->date_of_birth = $request->date_of_birth;
+        $users->home_town = $request->hometown;
+        $users->start_date = $request->start_date;
+        $users->role_id = $request->role_id;
+        $users->loan_laptop = $request->loan_laptop;
+        $users->save();
+
+        
+        Mail::to($users)->send(new NewUserCreated($users));
 
         return redirect('/')->with('succes', 'Account has been made!');
     }

@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 // page controller
 
-Route::get('/',[PageController::class, 'home']);
+Route::get('/',[PageController::class, 'home'])->name('home');
 Route::get('edit_user',[PageController::class, 'create_user']);
 Route::get('schedule', [PageController::class, 'schedule'])->name('schedule');
 Route::get('make_changes', [PageController::class, 'make_changes'])->name('make_changes');

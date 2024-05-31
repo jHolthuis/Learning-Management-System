@@ -11,7 +11,8 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class NewUserCreated extends Mailable implements ShouldQueue
+
+class NewUserCreated extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -20,7 +21,7 @@ class NewUserCreated extends Mailable implements ShouldQueue
      */
     public function __construct(
     
-        public User $user,
+        public User $user
     ){}
 
     /**
@@ -31,7 +32,7 @@ class NewUserCreated extends Mailable implements ShouldQueue
 
         return new Envelope(
             replyTo: [
-                new address($user->email , $user->name),
+                new address($this->user->email, $this->user->name)
             ],
             subject: 'New User Created',
         );

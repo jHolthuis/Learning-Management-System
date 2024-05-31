@@ -84,7 +84,6 @@ return [
             'mailers' => [
                 'mailgun',
                 'postmark',
-                'mailgun',
                 'smtp',
                 'log',
             ],
