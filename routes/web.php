@@ -2,10 +2,8 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\Pagecontroller;
 use App\http\Controllers\LessonController;
-use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,13 +49,6 @@ Route::get('show_schedule', [LessonController::class, "show"])->name('show_sched
 
 Route::post('change_schedule',[LessonController::class, 'store'])->name('store_schedule');
 
-// subject controller
-
-Route::get('/edit_schedule',[SubjectController::class, 'show_subjects'])->name('show_subjects');
-
-// classroom controller
-
-Route::get('/edit_schedule/classroom',[ClassroomController::class, 'show_classrooms'])->name('show_classrooms');
 
 
 
