@@ -3,9 +3,7 @@
 namespace App\Mail;
 
 use App\Models\User;
-use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailables\Address;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -14,7 +12,7 @@ use Illuminate\Queue\SerializesModels;
 
 class NewUserCreated extends Mailable
 {
-    use Queueable, SerializesModels;
+    use SerializesModels;
 
     /**
      * Create a new message instance.
@@ -27,16 +25,17 @@ class NewUserCreated extends Mailable
     /**
      * Get the message envelope.
      */
-    public function envelope(): Envelope
-    {
+    // public function envelope(): Envelope
+    // {
 
-        return new Envelope(
-            replyTo: [
-                new address($this->user->email, $this->user->name)
-            ],
-            subject: 'New User Created',
-        );
-    }
+    //     // return new Envelope(
+    //     //     from: config('from.address'),
+    //     //     replyTo: [
+    //     //         new address($this->user->email, $this->user->name)
+    //     //     ],
+    //     //     subject: 'New User Created',
+    //     // );
+    // }
 
     /**
      * Get the message content definition.
