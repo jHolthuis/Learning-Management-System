@@ -18,24 +18,21 @@ class NewUserCreated extends Mailable
      * Create a new message instance.
      */
     public function __construct(
-    
+
         public User $user
-    ){}
+    ) {
+    }
 
     /**
      * Get the message envelope.
      */
-    // public function envelope(): Envelope
-    // {
-
-    //     // return new Envelope(
-    //     //     from: config('from.address'),
-    //     //     replyTo: [
-    //     //         new address($this->user->email, $this->user->name)
-    //     //     ],
-    //     //     subject: 'New User Created',
-    //     // );
-    // }
+    public function envelope(): Envelope
+    {
+        return new Envelope(
+            from: config('mail.from.address'),
+            subject: 'New User Created',
+        );
+    }
 
     /**
      * Get the message content definition.
