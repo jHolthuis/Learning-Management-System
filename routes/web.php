@@ -45,8 +45,8 @@ Route::post('login',[LoginController::class,'login'])->middleware('guest');
 
 // lesson controller
 
-Route::get('show_schedule', [LessonController::class, "show"])->name('show_schedule');
-
+Route::get('show_schedule', [LessonController::class, "show_schedule"])->name('show_schedule');
+Route::get('show_subject', [LessonController::class, "show_subject"])->name('show_subject');
 Route::post('change_schedule',[LessonController::class, 'store'])->name('store_schedule');
 
 

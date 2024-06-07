@@ -1,3 +1,1 @@
-<div>
-    <?php $name; ?>
-</div>
+    {{ $name }}

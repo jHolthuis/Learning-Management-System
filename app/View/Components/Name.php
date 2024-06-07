@@ -9,13 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 class Name extends Component
 {
+    public string $name;
     /**
      * Create a new component instance.
      */
     public function __construct()
     {
-        $name = Auth::user()->name;
-        echo $name;
+        $this->name = Auth::user()->name;
     }
     /**
      * Get the view / contents that represent the component.

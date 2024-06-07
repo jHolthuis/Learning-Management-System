@@ -12,7 +12,7 @@
             </ul>
         </div>
     @endif
-    <x-schedule_form>
+    <x-schedule_form :subjects='$subjects'>
 
     </x-schedule_form>
 
