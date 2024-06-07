@@ -6,6 +6,8 @@ use App\Models\Lesson;
 use App\Models\Subject;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Models\Schedule;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -29,7 +31,15 @@ class LessonController extends Controller
     {
         $lessons = Lesson::where('lesson_id', $request->lesson_id)->get();
 
-        return view('pages.edit_schedule', compact('lessons'));
+        return view('pages.show_schedule', compact('lessons'));
+    }
+
+    public function update_schedule(Request $request)
+    {
+        $schedule = Schedule::all();
+
+        return view('pages.update_schedule', compact('schedule'));
+
     }
 
     public function show_subject(Request $request)

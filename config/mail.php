@@ -109,10 +109,7 @@ return [
     |
     */
 
-    'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'info@hacklab.frl'),
-        'name' => env('MAIL_FROM_NAME', 'Hacklab'),
-    ],
+    
 
     /*
     |--------------------------------------------------------------------------

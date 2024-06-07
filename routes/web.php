@@ -17,24 +17,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// page controller
 
-Route::get('/',[PageController::class, 'home'])->name('home');
-Route::get('edit_user',[PageController::class, 'create_user']);
-Route::get('schedule', [PageController::class, 'schedule'])->name('schedule');
-Route::get('make_changes', [PageController::class, 'make_changes'])->name('make_changes');
-Route::get('edit_schedule', [PageController::class, 'edit_schedule'])->name('edit_schedule');
+Route::middleware(['auth'])->group(function () {
 
-// account controller
+    // page controller
+    Route::get('/',[PageController::class, 'home'])->name('home');
+    Route::get('make_changes', [PageController::class, 'make_changes'])->name('make_changes');
 
-Route::get('/',[Accountcontroller::class, 'name']);
-Route::get('new_user', [AccountController::class, 'showRoles'])->name('new_user');
-Route::get('account_info/{reqUser?}', [AccountController::class, 'show'])->name('account_info');
-Route::get('/edit_profile', [AccountController::class, 'index'])->name('edit_profile.index');
+    // account controller
 
-Route::put('/edit_profile', [AccountController::class, 'edit'])->name('edit_profile.edit');
+    Route::get('new_user', [AccountController::class, 'showRoles'])->name('new_user');
+    Route::get('account_info/{reqUser?}', [AccountController::class, 'show'])->name('account_info');
 
-Route::post('store',[AccountController::class,'store'])->name('store_user');
+    Route::put('edit_profile', [AccountController::class, 'update'])->name('edit_profile');
+
+    Route::post('store',[AccountController::class,'store'])->name('store_user');
+
+
+    // lesson controller
+
+    Route::get('show_schedule', [LessonController::class, "show_schedule"])->name('show_schedule');
+    Route::get('show_subject', [LessonController::class, "show_subject"])->name('show_subject');
+
+    Route::put('update_schedule', [LessonController::class, "update_schedule"])->name('update_schedule');
+    
+    Route::post('change_schedule',[LessonController::class, 'store'])->name('store_schedule');
+});
 
 // login controller
 
@@ -42,13 +50,3 @@ Route::get('login',[LoginController::class,'showloginForm'])->name('login')->mid
 Route::get('logout',[LoginController::class, 'logout'])->name('logout');
 
 Route::post('login',[LoginController::class,'login'])->middleware('guest');
-
-// lesson controller
-
-Route::get('show_schedule', [LessonController::class, "show_schedule"])->name('show_schedule');
-Route::get('show_subject', [LessonController::class, "show_subject"])->name('show_subject');
-Route::post('change_schedule',[LessonController::class, 'store'])->name('store_schedule');
-
-
-
-

@@ -19,8 +19,7 @@ class AccountController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        return view('pages.edit_profile', compact('user'));
+    
     }
 
     public function showRoles(Request $request)
@@ -71,21 +70,11 @@ class AccountController extends Controller
 
         return view('pages.account_info', compact('user'));
     }
-     public function name()
-    {
-        if(Auth::check()) {
-            $name = Auth::user()->name;
-        
-        return view('pages.welcome', compact('name'));
-        } else {
-            return redirect()->route('login');
-        }
-    }
-
+    
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(UpdateUserRequest $request):RedirectResponse
+    public function update(UpdateUserRequest $request):RedirectResponse
     {
         /** @var /app/User $user*/
         $user = Auth::user();
@@ -101,14 +90,6 @@ class AccountController extends Controller
         $user->save();
 
         return redirect('account_info')->with('success', 'Your profile has been updated successfully!');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
     }
 
     /**

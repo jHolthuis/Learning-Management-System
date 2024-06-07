@@ -10,7 +10,7 @@
             href="{{ route('account_info') }}">My Account
             <a class="{{ request()->is('scedule') ? 'text-hacklab_green' : 'text-gray-200' }} transition font-bold float-right hover:text-hacklab_green delay-150 ease-in-out
                 hover:-translate-y-1 hover:scale-110"
-                href="{{ route('schedule') }}">Schedule
+                href="{{ route('show_schedule') }}">Schedule
                 <a class="{{ request()->is('make_changes') ? 'text-hacklab_green' : 'text-gray-200' }} transition font-bold float-right hover:text-hacklab_green delay-150 ease-in-out
                     hover:-translate-y-1 hover:scale-110"
                     href="{{ route('make_changes') }}">Changes
