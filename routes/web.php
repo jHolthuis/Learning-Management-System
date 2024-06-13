@@ -28,8 +28,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('new_user', [AccountController::class, 'showRoles'])->name('new_user');
     Route::get('account_info/{reqUser?}', [AccountController::class, 'show'])->name('account_info');
-
-    Route::put('edit_profile', [AccountController::class, 'update'])->name('edit_profile');
+    Route::get('edit_profile', [AccountController::class, 'edit_profile'])->name('edit_profile');
+    
+    Route::put('edit_profile', [AccountController::class, 'update'])->name('update_profile');
 
     Route::post('store',[AccountController::class,'store'])->name('store_user');
 
@@ -38,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('show_schedule', [LessonController::class, "show_schedule"])->name('show_schedule');
     Route::get('show_subject', [LessonController::class, "show_subject"])->name('show_subject');
+    Route::get('update_schedule', [LessonController::class, 'edit_schedule'])->name('edit_schedule');
 
     Route::put('update_schedule', [LessonController::class, "update_schedule"])->name('update_schedule');
     

@@ -16,7 +16,7 @@
 
 
     <form class="bg-gray-900/50 text-gray-50 border-none block p-8 ml-4 w-5/12 h-6/6 text-lg" method="POST"
-        action="{{ route('edit_profile.edit') }}" enctype="multipart/form-data">
+        action="{{ route('update_profile') }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 

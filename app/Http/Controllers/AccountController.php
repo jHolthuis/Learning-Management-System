@@ -71,6 +71,10 @@ class AccountController extends Controller
         return view('pages.account_info', compact('user'));
     }
     
+    public function edit_profile()
+    {
+        return view('pages.edit_profile', ['user' => Auth::User()]);
+    }
     /**
      * Show the form for editing the specified resource.
      */

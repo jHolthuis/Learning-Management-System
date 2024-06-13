@@ -34,6 +34,11 @@ class LessonController extends Controller
         return view('pages.show_schedule', compact('lessons'));
     }
 
+    public function edit_schedule()
+    {
+        return view('pages.update_schedule', ['user' => Auth::User()]);
+    }
+    
     public function update_schedule(Request $request)
     {
         $schedule = Schedule::all();
