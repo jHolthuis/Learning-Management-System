@@ -1,3 +1,4 @@
+{{-- mail setup for when a new user is made --}}
 <x-mail::panel>
     <x-mail::message>
         # New account
@@ -10,7 +11,7 @@
 
         wachtwoord: {{ $user->password }}
 
-
+        {{-- button to go to the login page --}}
         <x-mail::button url="http://localhost" color="success">
             Login hier
         </x-mail::button>

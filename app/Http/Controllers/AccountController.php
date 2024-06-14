@@ -22,16 +22,18 @@ class AccountController extends Controller
     
     }
 
+    // get all the roles from the database
     public function showRoles(Request $request)
     {
         $roles_table = Role::all();
 
+        // return to the create a new user page with the roles available
         return view('pages.new_user', [
             'roles' => $roles_table,
         ]);
     }
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new user.
      */
     public function create()
     {
@@ -39,10 +41,11 @@ class AccountController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created user in the DB and send a mail to the new user
      */
     public function store(CreateUserRequest $request): RedirectResponse
     {
+        // save input in the DB
         $users = new User;
         $users->name = $request->name;
         $users->email = $request->email;
@@ -55,14 +58,15 @@ class AccountController extends Controller
         $users->loan_laptop = $request->loan_laptop;
         $users->save();
 
-        
+        // mail to the new user
         Mail::to($users)->send(new NewUserCreated($users));
 
+        // return to welcome page with succes message
         return redirect('/')->with('succes', 'Account has been made!');
     }
 
     /**
-     * Display the specified resource.
+     * Get the user that is asked for, else get the logged in user
      */
     public function show(?User $reqUser)
     {
@@ -71,12 +75,14 @@ class AccountController extends Controller
         return view('pages.account_info', compact('user'));
     }
     
+    // get the users name to show at the edit profile page
     public function edit_profile()
     {
         return view('pages.edit_profile', ['user' => Auth::User()]);
     }
+
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the users information page.
      */
     public function update(UpdateUserRequest $request):RedirectResponse
     {

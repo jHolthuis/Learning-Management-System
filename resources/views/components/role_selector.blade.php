@@ -1,3 +1,5 @@
+{{-- Select a role for the create a new user page --}}
+
 <label class="text-white ml-4 mb-0">Role
     <select id="role_id" name="role_id"
         class="bg-gray-500/50 text-white focus:ring-1 focus:outline-none p-3 mt-0 mb-12 block w-96 m-4
