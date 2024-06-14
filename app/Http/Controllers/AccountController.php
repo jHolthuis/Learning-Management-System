@@ -59,7 +59,7 @@ class AccountController extends Controller
         $users->save();
 
         // mail to the new user
-        Mail::to($users)->send(new NewUserCreated($users));
+        Mail::to($users->email)->send(new NewUserCreated($users));
 
         // return to welcome page with succes message
         return redirect('/')->with('succes', 'Account has been made!');

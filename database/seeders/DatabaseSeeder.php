@@ -14,7 +14,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             Roleseeder::class,
-            
+            ClassroomSeeder::class,
+            SubjectSeeder::class
         ]);
     }
 }
