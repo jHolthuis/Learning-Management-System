@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\AvailabilityController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Pagecontroller;
 use App\http\Controllers\LessonController;
@@ -22,6 +23,7 @@ Route::middleware(['auth'])->group(function () {
 
     // page controller
     Route::get('/',[PageController::class, 'home'])->name('home');
+    Route::get('availability', [PageController::class, 'availability'])->name('availability_input');
     Route::get('make_changes', [PageController::class, 'make_changes'])->name('make_changes');
 
     // account controller
@@ -31,9 +33,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('edit_profile', [AccountController::class, 'edit_profile'])->name('edit_profile');
     
     Route::put('edit_profile', [AccountController::class, 'update'])->name('update_profile');
-
+    
     Route::post('store',[AccountController::class,'store'])->name('store_user');
 
+    // availability controller
+
+    Route::post('availability', [AvailabilityController::class, 'store'])->name('availability_store');
+    Route::get('availability_index', [AvailabilityController::class, 'index'])->name('availability_index');
 
     // lesson controller
 

@@ -46,20 +46,20 @@ class AccountController extends Controller
     public function store(CreateUserRequest $request): RedirectResponse
     {
         // save input in the DB
-        $users = new User;
-        $users->name = $request->name;
-        $users->email = $request->email;
-        $users->password = $request->password;
-        $users->phone_number = $request->phone_number;
-        $users->date_of_birth = $request->date_of_birth;
-        $users->home_town = $request->hometown;
-        $users->start_date = $request->start_date;
-        $users->role_id = $request->role_id;
-        $users->loan_laptop = $request->loan_laptop;
-        $users->save();
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->phone_number = $request->phone_number;
+        $user->date_of_birth = $request->date_of_birth;
+        $user->home_town = $request->hometown;
+        $user->start_date = $request->start_date;
+        $user->role_id = $request->role_id;
+        $user->loan_laptop = $request->loan_laptop;
+        $user->save();
 
         // mail to the new user
-        Mail::to($users->email)->send(new NewUserCreated($users));
+        Mail::to($user->email)->send(new NewUserCreated($user));
 
         // return to welcome page with succes message
         return redirect('/')->with('succes', 'Account has been made!');
