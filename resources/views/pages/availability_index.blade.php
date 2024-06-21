@@ -2,8 +2,9 @@
 @extends('layout.app')
 @section('content')
 
-    {{-- current page for main menu --}}
+    {{-- format for date and time to use and current page for main menu --}}
     <?php
+    use Carbon\Carbon;
     $currentPage = 'availability_index';
     ?>
 
@@ -31,10 +32,10 @@
         </thead>
         <tbody>
             @foreach ($availabilities as $availability)
-                <tr>
-                    <td>{{ $availability->date }}</td>
-                    <td>{{ $availability->start_time }}</td>
-                    <td>{{ $availability->end_time }}</td>
+                <tr class="border-2 border-hacklab_green">
+                    <td class="text-center">{{ Carbon::parse($availability->date)->format('d-m-Y') }}</td>
+                    <td class="text-center">{{ Carbon::parse($availability->start_time)->format('H:i') }}</td>
+                    <td class="text-center">{{ Carbon::parse($availability->end_time)->format('H:i') }}</td>
                 </tr>
             @endforeach
         </tbody>

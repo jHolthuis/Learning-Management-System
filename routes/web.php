@@ -22,9 +22,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth'])->group(function () {
 
     // page controller
-    Route::get('/',[PageController::class, 'home'])->name('home');
-    Route::get('availability', [PageController::class, 'availability'])->name('availability_input');
-    Route::get('make_changes', [PageController::class, 'make_changes'])->name('make_changes');
+    Route::view('/', 'home');
+    Route::view('availability', 'pages.availability_input')->name('availability_input');
+    Route::view('make_changes', 'pages.make_changes')->name('make_changes');
 
     // account controller
 
