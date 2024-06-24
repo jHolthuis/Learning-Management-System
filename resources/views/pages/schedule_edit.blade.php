@@ -1,8 +1,9 @@
 @extends('layout.app')
 @section('content')
     <?php
-    $currentPage = 'edit_schedule';
+    $currentPage = 'schedule_edit';
     ?>
+
     @if ($errors->any())
         <div>
             <ul>
@@ -12,8 +13,7 @@
             </ul>
         </div>
     @endif
-    <x-schedule_form :subjects='$subjects'>
 
-    </x-schedule_form>
+    <x-schedule_form :subjects='$subjects' :weekdays='$weekdays' :teachers='$teachers' :classrooms='$classrooms'> </x-schedule_form>
 
 @endsection

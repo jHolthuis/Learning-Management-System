@@ -3,6 +3,7 @@
     <?php
     $currentPage = 'schedule';
     ?>
+
     @if ($errors->any())
         <div>
             <ul>
@@ -13,11 +14,4 @@
         </div>
     @endif
 
-    @foreach ($lessons as $lesson)
-        <div class="lesson">
-            <h4>{{ $lesson->subject->name }}</h4>
-            <p>Teacher: {{ $lesson->user->name }}</p>
-            <p>Classroom: {{ $lesson->classroom->location }}</p>
-            <p>Time: {{ $lesson->start_time }} - {{ $lesson->end_time }}</p>
-        </div>
-    @endforeach
+    <x-schedule_table :lessons='$lessons'> </x-schedule_table>

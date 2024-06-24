@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Auth\CreateLessonRequest;
+use App\Models\Classroom;
+use App\Models\DayOfTheWeek;
 use App\Models\Lesson;
 use App\Models\Subject;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Schedule;
@@ -13,25 +17,35 @@ use Illuminate\Support\Facades\Auth;
 
 class LessonController extends Controller
 {
-    public function store(Request $request): RedirectResponse
+    public function show_schedule()
     {
-        $lessons = new Lesson;
-        $lessons->subject_id = $request->subject_id;
-        $lessons->user_id = $request->user_id;
-        $lessons->classroom_id = $request->classroom_id;
-        $lessons->start_time = $request->start_time;
-        $lessons->end_time = $request->end_time;
-        $lessons->day_of_week = $request->day_of_week;
-        $lessons->save();
-
-        return redirect()->route('schedule')->with('succes', "Lesson added successfully");
+        $lessons = Lesson::all();
+        return view('pages.schedule', compact('lessons'));
     }
 
-    public function show_schedule(Request $request)
+    public function store(CreateLessonRequest $request): RedirectResponse
     {
-        $lessons = Lesson::where('lesson_id', $request->lesson_id)->get();
+        $lesson = new Lesson;
+        $lesson->subject_id = $request->subject;
+        $lesson->user_id = $request->teacher;
+        $lesson->day_of_week = $request->day_of_the_week;
+        $lesson->start_time = $request->start_time;
+        $lesson->end_time = $request->end_time;
+        $lesson->classroom_id = $request->classroom;
+        $lesson->save();
 
-        return view('pages.show_schedule', compact('lessons'));
+        return redirect()->route('show_schedule')->with('succes', "Schedule has been updated!");
+    }
+
+    public function schedule_input(Request $request)
+    {
+        $lessons = Lesson::all();
+        $subjects = Subject::all();
+        $weekdays = DayOfTheWeek::all();
+        $teachers = User::where('role_id', '2')->get();
+        $classrooms = classroom::all();
+
+        return view('pages.schedule_edit', compact('lessons', 'subjects', 'weekdays', 'teachers', 'classrooms'));
     }
 
     public function edit_schedule()
@@ -41,16 +55,6 @@ class LessonController extends Controller
     
     public function update_schedule(Request $request)
     {
-        $schedule = Schedule::all();
-
-        return view('pages.update_schedule', compact('schedule'));
-
-    }
-
-    public function show_subject(Request $request)
-    {
-        $subjects = Subject::All();
-
-        return view('pages.edit_schedule', compact('subjects'));
+        // later maybe...
     }
 }

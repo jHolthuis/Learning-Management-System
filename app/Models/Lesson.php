@@ -21,4 +21,8 @@ class Lesson extends Model
     {
         return $this->belongsTo(Classroom::class);
     }
+    public function dayOfTheWeek()
+    {
+        return $this->belongsTo(DayOfTheWeek::class);
+    }
 }

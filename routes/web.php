@@ -21,8 +21,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function () {
 
-    // page controller
-    Route::view('/', 'home');
+    // direct to view
+    Route::view('/', 'pages.welcome')->name('home');
     Route::view('availability', 'pages.availability_input')->name('availability_input');
     Route::view('make_changes', 'pages.make_changes')->name('make_changes');
 
@@ -43,13 +43,13 @@ Route::middleware(['auth'])->group(function () {
 
     // lesson controller
 
-    Route::get('show_schedule', [LessonController::class, "show_schedule"])->name('show_schedule');
-    Route::get('show_subject', [LessonController::class, "show_subject"])->name('show_subject');
+    Route::get('schedule_edit', [LessonController::class, "schedule_input"])->name('schedule_input');
     Route::get('update_schedule', [LessonController::class, 'edit_schedule'])->name('edit_schedule');
+    Route::get('schedule', [LessonController::class, 'show_schedule'])->name('show_schedule');
 
     Route::put('update_schedule', [LessonController::class, "update_schedule"])->name('update_schedule');
     
-    Route::post('change_schedule',[LessonController::class, 'store'])->name('store_schedule');
+    Route::post('new_schedule',[LessonController::class, 'store'])->name('store_schedule');
 });
 
 // login controller
