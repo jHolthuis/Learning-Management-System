@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lesson extends Model
 {
-    public function teacher()
+
+    protected $with = ["dayOfTheWeek"];
+
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
@@ -23,6 +26,6 @@ class Lesson extends Model
     }
     public function dayOfTheWeek()
     {
-        return $this->belongsTo(DayOfTheWeek::class);
+        return $this->belongsTo(DayOfTheWeek::class, 'day_of_week_id');
     }
 }

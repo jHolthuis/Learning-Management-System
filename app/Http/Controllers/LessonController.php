@@ -20,7 +20,10 @@ class LessonController extends Controller
     public function show_schedule()
     {
         $lessons = Lesson::all();
-        return view('pages.schedule', compact('lessons'));
+        $classrooms = Classroom::with('lessons.user', 'lessons.dayOfTheWeek')->get();
+        $days = DayOfTheWeek::all();
+
+        return view('pages.schedule', compact('lessons', 'classrooms', 'days'));
     }
 
     public function store(CreateLessonRequest $request): RedirectResponse
@@ -28,10 +31,10 @@ class LessonController extends Controller
         $lesson = new Lesson;
         $lesson->subject_id = $request->subject;
         $lesson->user_id = $request->teacher;
-        $lesson->day_of_week = $request->day_of_the_week;
+        $lesson->classroom_id = $request->classroom;
+        $lesson->day_of_week_id = $request->day_of_the_week;
         $lesson->start_time = $request->start_time;
         $lesson->end_time = $request->end_time;
-        $lesson->classroom_id = $request->classroom;
         $lesson->save();
 
         return redirect()->route('show_schedule')->with('succes', "Schedule has been updated!");

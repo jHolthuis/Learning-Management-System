@@ -5,43 +5,38 @@ use Carbon\Carbon;
 ?>
 
 <h2 class="text-white">Weekly Schedule</h2>
-<table>
-    <tr class="text-white">
-        <th class='p-3 m-4 text-center'>Time</th>
-        <th class='p-3 m-4 text-center'>Monday</th>
-        <th class='p-3 m-4 text-center'>Tuesday</th>
-        <th class='p-3 m-4 text-center'>Wednesday</th>
-        <th class='p-3 m-4 text-center'>Thursday</th>
-        <th class='p-3 m-4 text-center'>Friday</th>
-    </tr>
-    @foreach ($lessons as $lesson)
-        <tr class="text-white">
-            <td class='p-3 m-4 text-center'>{{ Carbon::parse($lesson->start_time)->format('H:i') }}</td>
-            <td class='p-3 m-4 text-center'>
-                @if ($lesson->day_of_week == '1')
-                    {{ $lesson->subject->name }}
-                @endif
-            </td>
-            <td class='p-3 m-4 text-center'>
-                @if ($lesson->day_of_week == '2')
-                    {{ $lesson->subject->name }}
-                @endif
-            </td>
-            <td class='p-3 m-4 text-center'>
-                @if ($lesson->day_of_week == '3')
-                    {{ $lesson->subject->name }}
-                @endif
-            </td>
-            <td class='p-3 m-4 text-center'>
-                @if ($lesson->day_of_week == '4')
-                    {{ $lesson->subject->name }}
-                @endif
-            </td>
-            <td class='p-3 m-4 text-center'>
-                @if ($lesson->day_of_week == '5')
-                    {{ $lesson->subject->name }}
-                @endif
-            </td>
-        </tr>
-    @endforeach
-</table>
+@foreach ($classrooms as $classroom)
+    <h2 class="text-white">{{ $classroom->location }}</h2>
+    @php
+        $groupedByDay = $classroom->lessons->groupBy('dayOfTheWeek.name');
+        $groupedByStartTime = $classroom->lessons->groupBy('start_time');
+    @endphp
+    <table>
+        <thead>
+            <tr class="text-white">
+                <th class='p-3 m-4 text-center'>Time</th>
+                @foreach ($groupedByDay as $key => $day)
+                    <th class='p-3 m-4 text-center'>
+                        {{ $key }}
+                    </th>
+                @endforeach
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($groupedByStartTime as $startTime => $lessons)
+                <tr class="text-white">
+                    <td class='p-3 m-4 text-center'>
+                        {{ Carbon::parse($startTime)->format('H:i') }} <br>
+                        {{ Carbon::parse($lessons->first()->end_time)->format('H:i') }}
+                    </td>
+                    @foreach ($lessons as $lesson)
+                        <td class='p-3 m-4 text-center'>
+                            {{ $lesson->subject->name }} <br>
+                            {{ $lesson->user->name }}
+                        </td>
+                    @endforeach
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+@endforeach

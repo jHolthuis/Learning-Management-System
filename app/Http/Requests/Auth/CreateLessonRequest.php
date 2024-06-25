@@ -23,11 +23,11 @@ class CreateLessonRequest extends FormRequest
     {
         return [
             'subject' => 'required|exists:subjects,id',
-            'teacher' => 'exists:users,id',
+            'teacher' => 'exists:users,id|nullable',
+            'classroom' => 'exists:classrooms,id',
             'day_of_the_week' => 'exists:day_of_the_weeks,id',
             'start_time' => 'date_format:H:i',
-            'end_time' => 'date_format:H:i',
-            'classroom' => 'exists:classrooms,id'
+            'end_time' => 'date_format:H:i'
         ];
     }
 }
