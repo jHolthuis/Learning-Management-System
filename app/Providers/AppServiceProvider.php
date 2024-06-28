@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\facades\Mail;
+
 
 class AppServiceProvider extends ServiceProvider
 {
