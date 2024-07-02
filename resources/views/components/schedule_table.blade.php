@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
-<h2 class="text-white">Weekly Schedule</h2>
+<h1 class="text-hacklab_green font-bold">Weekly Schedule</h1>
 @foreach ($classrooms as $classroom)
-    <h2 class="text-white">{{ $classroom->location }}</h2>
-    <table>
-        <thead>
+    <h2 class="text-white mt-8">{{ $classroom->location }}</h2>
+    <table class="border-hacklab_green border-2">
+        <thead class="border-hacklab_green border-2">
             <tr class="text-white">
                 <th class='p-3 m-4 text-center'>Time</th>
                 @foreach ($days as $day)
@@ -15,21 +15,13 @@
         </thead>
         <tbody>
             @foreach ($timeSlots as $timeSlot)
-                <tr>
-                    <td>{{ $timeSlot }}</td>
+                <tr class="text-white">
+                    <td class='p-3 m-4 text-center'>{{ $timeSlot }}</td>
                     @foreach ($days as $index => $day)
-                        @php
-                            [$lessons->start_time, $lessons->end_time] = explode(' - ', $timeSlot);
-
-                            $lesson = $lessons->first(function ($lesson) use ($index, $startTime, $endTime) {
-                                return $lesson->day_of_the_week_id == $index + 1 &&
-                                    $lesson->start_time == $startTime &&
-                                    $lesson->end_time == $endTime;
-                            });
-                        @endphp
-                        <td>
+                        <td class='p-3 m-4 text-center'>
                             @if ($lesson)
                                 {{ $lesson->name }}
+                                {{ $lesson->user->name }}
                             @else
                                 {{ 'Room available' }}
                             @endif

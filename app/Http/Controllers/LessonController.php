@@ -18,20 +18,23 @@ class LessonController extends Controller
 {
     public function show_schedule()
     {
+        // get the DB information
         $lessons = Lesson::all();
         $classrooms = Classroom::with('lessons.user', 'lessons.dayOfTheWeek')->get();
         $days = DayOfTheWeek::all();
 
+        // an array for the starting and ending time
         $timeSlots = [];
         $startHour = 9;
         $endHour = 16;
 
+        // fill the array with all the time slots that are needed.
         for($hour = $startHour; $hour < $endHour; $hour++) {
             $timeSlots[] = sprintf('%02d:00 - %02d:00', $hour, $hour + 1);
         }
 
         return view('pages.schedule', compact('lessons', 'classrooms', 'days', 'timeSlots'));
-    }
+        }
 
     public function store(CreateLessonRequest $request): RedirectResponse
     {

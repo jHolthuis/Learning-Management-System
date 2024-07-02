@@ -10,11 +10,12 @@
         border-2 border-gray-400 focus:border-none rounded-sm focus:ring-hacklab_green focus:outline-1
         outline-hacklab_green placeholder-gray-400 focus:placeholder-hacklab_green"
             required>
-            <?php foreach($subjects as $subject): ?>
-            <option value="{{ $subject['id'] }}">
-                {{ $subject['name'] }}
-            </option>
-            <?php endforeach;?>
+            @foreach ($subjects as $subject)
+                :
+                <option value="{{ $subject['id'] }}">
+                    {{ $subject['name'] }}
+                </option>
+            @endforeach;
         </select>
     </label>
 
@@ -24,11 +25,12 @@
             border-2 border-gray-400 focus:border-none rounded-sm focus:ring-hacklab_green focus:outline-1
             outline-hacklab_green placeholder-gray-400 focus:placeholder-hacklab_green">
             <option value="">Select a Teacher (optional)</option>
-            <?php foreach($teachers as $teacher): ?>
-            <option value="{{ $teacher['id'] }}">
-                {{ $teacher['name'] }}
-            </option>
-            <?php endforeach;?>
+            @foreach ($teachers as $teacher)
+                :
+                <option value="{{ $teacher['id'] }}">
+                    {{ $teacher['name'] }}
+                </option>
+            @endforeach;
         </select>
     </label>
 
@@ -38,11 +40,12 @@
             border-2 border-gray-400 focus:border-none rounded-sm focus:ring-hacklab_green focus:outline-1
             outline-hacklab_green placeholder-gray-400 focus:placeholder-hacklab_green"
             required>
-            <?php foreach($weekdays as $weekday): ?>
-            <option value="{{ $weekday['id'] }}">
-                {{ $weekday['name'] }}
-            </option>
-            <?php endforeach;?>
+            @foreach ($weekdays as $weekday)
+                :
+                <option value="{{ $weekday['id'] }}">
+                    {{ $weekday['name'] }}
+                </option>
+            @endforeach
         </select>
     </label>
 
@@ -68,11 +71,12 @@
             border-2 border-gray-400 focus:border-none rounded-sm focus:ring-hacklab_green focus:outline-1
             outline-hacklab_green placeholder-gray-400 focus:placeholder-hacklab_green"
             required>
-            <?php foreach($classrooms as $classroom): ?>
-            <option value="{{ $classroom['id'] }}">
-                {{ $classroom['location'] }}
-            </option>
-            <?php endforeach;?>
+            @foreach ($classrooms as $classroom)
+                :
+                <option value="{{ $classroom['id'] }}">
+                    {{ $classroom['location'] }}
+                </option>
+            @endforeach;
         </select>
     </label>
 

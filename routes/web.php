@@ -3,7 +3,6 @@
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AvailabilityController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Pagecontroller;
 use App\Http\Controllers\LessonController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,10 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Middleware for logged in users only
 
 Route::middleware(['auth'])->group(function () {
 
-    // direct to view
+    // straight to view
     Route::view('/', 'pages.welcome')->name('home');
     Route::view('availability', 'pages.availability_input')->name('availability_input');
     Route::view('make_changes', 'pages.make_changes')->name('make_changes');
