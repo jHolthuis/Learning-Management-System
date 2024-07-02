@@ -10,7 +10,6 @@ use App\Models\Subject;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Models\Schedule;
 use Illuminate\Support\Facades\Auth;
 
 
