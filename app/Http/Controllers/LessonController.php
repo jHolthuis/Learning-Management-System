@@ -13,9 +13,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
-
+// the controller for all the lessons in hacklab
 class LessonController extends Controller
 {
+    // Let's show the schedule to the user
     public function show_schedule()
     {
         // get the DB information
@@ -33,11 +34,15 @@ class LessonController extends Controller
             $timeSlots[] = sprintf('%02d:00 - %02d:00', $hour, $hour + 1);
         }
 
+        // go to the schedule page with the usable variables
         return view('pages.schedule', compact('lessons', 'classrooms', 'days', 'timeSlots'));
         }
 
+        
+    // let's store the lesson form in the DB
     public function store(CreateLessonRequest $request): RedirectResponse
     {
+        // post all the input from the form in the DB
         $lesson = new Lesson;
         $lesson->subject_id = $request->subject;
         $lesson->user_id = $request->teacher;
@@ -45,29 +50,25 @@ class LessonController extends Controller
         $lesson->day_of_week_id = $request->day_of_the_week;
         $lesson->start_time = $request->start_time;
         $lesson->end_time = $request->end_time;
+        
+        // save the DB
         $lesson->save();
 
+        // redirect to the route show_schedule so you can instantly see the changes that have been made
         return redirect()->route('show_schedule')->with('succes', "Schedule has been updated!");
     }
 
+    // all the input needed for the schedule input form
     public function schedule_input(Request $request)
     {
+        // All varaibles needed from the DB
         $lessons = Lesson::all();
         $subjects = Subject::all();
         $weekdays = DayOfTheWeek::all();
         $teachers = User::where('role_id', '2')->get();
         $classrooms = classroom::all();
 
+        // go to the edit schedule page with the created variables
         return view('pages.schedule_edit', compact('lessons', 'subjects', 'weekdays', 'teachers', 'classrooms'));
-    }
-
-    public function edit_schedule()
-    {
-        return view('pages.update_schedule', ['user' => Auth::User()]);
-    }
-    
-    public function update_schedule(Request $request)
-    {
-        // later maybe...
     }
 }
