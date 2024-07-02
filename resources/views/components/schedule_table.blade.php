@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 
-<?php
-use Carbon\Carbon;
-?>
-
 <h2 class="text-white">Weekly Schedule</h2>
 @foreach ($classrooms as $classroom)
     <h2 class="text-white">{{ $classroom->location }}</h2>
-    @php
-        $groupedByDay = $classroom->lessons->groupBy('dayOfTheWeek.name');
-        $groupedByStartTime = $classroom->lessons->groupBy('start_time');
-    @endphp
     <table>
         <thead>
             <tr class="text-white">
                 <th class='p-3 m-4 text-center'>Time</th>
-                @foreach ($groupedByDay as $key => $day)
+                @foreach ($days as $day)
                     <th class='p-3 m-4 text-center'>
-                        {{ $key }}
+                        {{ $day->name }}
                     </th>
                 @endforeach
-            </tr>
         </thead>
         <tbody>
-            @foreach ($groupedByStartTime as $startTime => $lessons)
-                <tr class="text-white">
-                    <td class='p-3 m-4 text-center'>
-                        {{ Carbon::parse($startTime)->format('H:i') }} <br>
-                        {{ Carbon::parse($lessons->first()->end_time)->format('H:i') }}
-                    </td>
-                    @foreach ($lessons as $lesson)
-                        <td class='p-3 m-4 text-center'>
-                            {{ $lesson->subject->name }} <br>
-                            {{ $lesson->user->name }}
+            @foreach ($timeSlots as $timeSlot)
+                <tr>
+                    <td>{{ $timeSlot }}</td>
+                    @foreach ($days as $index => $day)
+                        @php
+                            [$lessons->start_time, $lessons->end_time] = explode(' - ', $timeSlot);
+
+                            $lesson = $lessons->first(function ($lesson) use ($index, $startTime, $endTime) {
+                                return $lesson->day_of_the_week_id == $index + 1 &&
+                                    $lesson->start_time == $startTime &&
+                                    $lesson->end_time == $endTime;
+                            });
+                        @endphp
+                        <td>
+                            @if ($lesson)
+                                {{ $lesson->name }}
+                            @else
+                                {{ 'Room available' }}
+                            @endif
                         </td>
                     @endforeach
                 </tr>

@@ -22,7 +22,15 @@ class LessonController extends Controller
         $classrooms = Classroom::with('lessons.user', 'lessons.dayOfTheWeek')->get();
         $days = DayOfTheWeek::all();
 
-        return view('pages.schedule', compact('lessons', 'classrooms', 'days'));
+        $timeSlots = [];
+        $startHour = 9;
+        $endHour = 16;
+
+        for($hour = $startHour; $hour < $endHour; $hour++) {
+            $timeSlots[] = sprintf('%02d:00 - %02d:00', $hour, $hour + 1);
+        }
+
+        return view('pages.schedule', compact('lessons', 'classrooms', 'days', 'timeSlots'));
     }
 
     public function store(CreateLessonRequest $request): RedirectResponse

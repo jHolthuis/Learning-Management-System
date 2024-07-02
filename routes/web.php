@@ -4,7 +4,7 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AvailabilityController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Pagecontroller;
-use App\http\Controllers\LessonController;
+use App\Http\Controllers\LessonController;
 use Illuminate\Support\Facades\Route;
 
 /*
