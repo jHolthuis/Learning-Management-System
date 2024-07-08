@@ -14,4 +14,5 @@
         </div>
     @endif
 
-    <x-schedule_table :lessons='$lessons' :classrooms='$classrooms' :days='$days' :timeSlots='$timeSlots'> </x-schedule_table>
+    <x-schedule_table :classrooms='$classrooms' :days='$days' :timeslots='$timeslots'>
+    </x-schedule_table>

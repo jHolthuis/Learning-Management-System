@@ -14,19 +14,29 @@
                 @endforeach
         </thead>
         <tbody>
-            @foreach ($timeSlots as $timeSlot)
+            @foreach ($timeslots as $timeslot)
+                @php
+                    $lessons = $classroom->lessons->get($timeslot);
+                @endphp
                 <tr class="text-white">
-                    <td class='p-3 m-4 text-center'>{{ $timeSlot }}</td>
-                    @foreach ($days as $index => $day)
+                    <td class='p-3 m-4 text-center'>{{ $timeslot }}</td>
+                    @for ($i = 1; $i <= 5; $i++)
                         <td class='p-3 m-4 text-center'>
-                            @if ($lesson)
-                                {{ $lesson->name }}
-                                {{ $lesson->user->name }}
-                            @else
+                            @php
+                                $lesson = $lessons ? $lessons->firstWhere('day_of_week_id', '=', $i) : null;
+                            @endphp
+                            @if ($lesson == null)
                                 {{ 'Room available' }}
+                            @else
+                                {{ $lesson->subject->name }} <br>
+                                @if ($lesson->user == null)
+                                    {{ '' }}
+                                @else
+                                    {{ $lesson->user->name }}
+                                @endif
                             @endif
                         </td>
-                    @endforeach
+                    @endfor
                 </tr>
             @endforeach
         </tbody>
