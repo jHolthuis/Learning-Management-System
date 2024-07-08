@@ -9,6 +9,8 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+
+     // add a profile picture to the DB
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {

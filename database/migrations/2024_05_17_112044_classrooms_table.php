@@ -9,6 +9,8 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+
+     // create the classrooms table in the DB
     public function up(): void
     {
         schema::create('classrooms', function(Blueprint $table) {

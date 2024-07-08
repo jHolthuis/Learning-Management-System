@@ -16,6 +16,8 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+     // table content fillable
     protected $fillable = [
         'name',
         'email',
@@ -33,6 +35,8 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+     // hidden table content
     protected $hidden = [
         'password',
         'remember_token',
@@ -43,10 +47,14 @@ class User extends Authenticatable
      *
      * @var array<string, string>
      */
+    
+     // email and password verivication
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    // has many lessons
     public function lessons()
     {
         return $this->hasMany(Lesson::class);

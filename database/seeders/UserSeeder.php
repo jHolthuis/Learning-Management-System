@@ -13,6 +13,9 @@ class UserSeeder extends Seeder
     /**
      * Run the database seeds.
      */
+
+
+     // put some users in the table/DB to have something to start with, and the teachers for schedule input
     public function run(): void
     {
         $users = [

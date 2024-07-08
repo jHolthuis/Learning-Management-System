@@ -12,6 +12,9 @@ class Roleseeder extends Seeder
     /**
      * Run the database seeds.
      */
+
+
+     // input all the different roles in the roles table
     public function run(): void
     {
         $roles = [

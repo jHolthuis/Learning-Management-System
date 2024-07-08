@@ -9,6 +9,8 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+
+     // create the days of the weeks table in the DB
     public function up(): void
     {
         Schema::create('day_of_the_weeks', function (Blueprint $table) {

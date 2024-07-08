@@ -9,6 +9,7 @@ class Availability extends Model
 {
     use HasFactory;
 
+    // the table content
     protected $fillable = [
         'user_id',
         'date',
@@ -16,6 +17,7 @@ class Availability extends Model
         'end_time',
     ];
 
+    // this model bolongs to the user table
     public function user()
     {
         return $this->belongsTo(User::class);

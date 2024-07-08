@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Lesson extends Model
 {
 
+    // protected day of the week
     protected $with = ["dayOfTheWeek"];
 
+    // belongs to different models
     public function user()
     {
         return $this->belongsTo(User::class);

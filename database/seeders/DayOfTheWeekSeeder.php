@@ -11,6 +11,9 @@ class DayOfTheWeekSeeder extends Seeder
     /**
      * Run the database seeds.
      */
+
+
+     // put all the days of the week in the table
     public function run(): void
     {
         $dayofweeks = [

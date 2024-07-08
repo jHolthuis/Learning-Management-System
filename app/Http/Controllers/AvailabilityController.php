@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Auth\AvailabilityRequest;
 use Illuminate\Http\Request;
 use App\Models\Availability;
+use Illuminate\Http\RedirectResponse;
 
 class AvailabilityController extends Controller
 {
+    // show the availability of the user
     public function index()
 {
     $availabilities = Availability::where('user_id', auth()->id())->get();
@@ -14,14 +17,10 @@ class AvailabilityController extends Controller
     return view('pages.availability_index', compact('availabilities'));
 }
 
-    public function store(Request $request)
+    // store the availability of the user in the DB
+    public function store(AvailabilityRequest $request): RedirectResponse
     {
-        $request->validate([
-            'date' => 'required|date',
-            'start_time' => 'required|date_format:H:i',
-            'end_time' => 'required|date_format:H:i|after:start_time',
-        ]);
-
+        // create the availability table of a user
         Availability::create([
             'user_id' => auth()->id(),
             'date' => $request->date,

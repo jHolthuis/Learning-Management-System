@@ -11,6 +11,9 @@ class SubjectSeeder extends Seeder
     /**
      * Run the database seeds.
      */
+
+
+     // get all the different subjects in the table
     public function run(): void
     {
        $subjects = [

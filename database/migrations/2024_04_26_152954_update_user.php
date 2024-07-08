@@ -9,6 +9,8 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+
+     // add 2 rows to the users table in the DB
     public function up(): void
     {
         schema::table('users', function (Blueprint $table) {

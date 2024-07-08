@@ -9,6 +9,8 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+
+     // create all the jobs tables in the DB
     public function up(): void
     {
         Schema::create('jobs', function (Blueprint $table) {

@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // create the users  table in the DB
         Schema::create('users', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->string('name');
@@ -25,12 +26,14 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        // create the password tokens in the DB
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
             $table->string('token');
             $table->timestamp('created_at')->nullable();
         });
 
+        // create the sessions table in the DB
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->foreignId('user_id')->nullable()->index();

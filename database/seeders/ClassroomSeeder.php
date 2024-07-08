@@ -11,7 +11,9 @@ class ClassroomSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+
+    // fiil the classroom table with the classrooms
+     public function run(): void
     {
         $classrooms = [
             ['location' => 'Lokaal 1'],

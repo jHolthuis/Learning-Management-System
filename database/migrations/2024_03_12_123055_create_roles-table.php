@@ -9,6 +9,8 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+
+     // create the roles table in the DB
     public function up(): void
     {
         Schema::create('roles', function (Blueprint $table) {
