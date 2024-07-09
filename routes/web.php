@@ -46,7 +46,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('schedule_edit', [LessonController::class, "schedule_input"])->name('schedule_input');
     Route::get('schedule', [LessonController::class, 'show_schedule'])->name('show_schedule');
     
-    Route::post('new_schedule',[LessonController::class, 'store'])->name('store_schedule');
+    Route::post('new_schedule',[LessonController::class, 'storeOrUpdate'])->name('store_or_update_schedule');
 });
 
 // login controller

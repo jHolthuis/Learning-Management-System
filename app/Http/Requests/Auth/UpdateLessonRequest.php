@@ -4,14 +4,14 @@ namespace App\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateLessonRequest extends FormRequest
+class UpdateLessonRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,12 +22,12 @@ class CreateLessonRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'subject' => 'required|exists:subjects,id',
-            'teacher' => 'exists:users,id|nullable',
-            'classroom' => 'exists:classrooms,id',
-            'day_of_the_week' => 'exists:day_of_the_weeks,id',
-            'start_time' => 'date_format:H:i',
-            'end_time' => 'date_format:H:i'
+                'subject' => 'required|exists:subjects,id',
+                'teacher' => 'exists:users,id|nullable',
+                'classroom' => 'exists:classrooms,id',
+                'day_of_the_week' => 'exists:day_of_the_weeks,id',
+                'start_time' => 'date_format:H:i',
+                'end_time' => 'date_format:H:i'
         ];
     }
 }

@@ -86,6 +86,8 @@ class AccountController extends Controller
      */
     public function update(UpdateUserRequest $request):RedirectResponse
     {
+
+        // update the post
         /** @var /app/User $user*/
         $user = Auth::user();
         $user->name = $request->name;

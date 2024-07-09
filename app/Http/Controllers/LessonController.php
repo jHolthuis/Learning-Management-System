@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Auth\CreateLessonRequest;
+use App\Http\Requests\Auth\UpdateLessonRequest;
 use App\Models\Classroom;
 use App\Models\DayOfTheWeek;
 use App\Models\Lesson;
@@ -10,6 +10,7 @@ use App\Models\Subject;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 
 // the controller for all the lessons in hacklab
@@ -42,25 +43,6 @@ class LessonController extends Controller
         return view('pages.schedule', compact('classrooms', 'days', 'timeslots'));
     }
 
-        
-    // let's store the lesson form in the DB
-    public function store(CreateLessonRequest $request): RedirectResponse
-    {
-        // post all the input from the form in the DB
-        $lesson = new Lesson;
-        $lesson->subject_id = $request->subject;
-        $lesson->user_id = $request->teacher;
-        $lesson->classroom_id = $request->classroom;
-        $lesson->day_of_week_id = $request->day_of_the_week;
-        $lesson->start_time = $request->start_time;
-        $lesson->end_time = $request->end_time;
-        
-        // save the DB
-        $lesson->save();
-
-        // redirect to the route show_schedule so you can instantly see the changes that have been made
-        return redirect()->route('show_schedule')->with('succes', "Schedule has been updated!");
-    }
 
     // all the input needed for the schedule input form
     public function schedule_input(Request $request)
@@ -74,5 +56,39 @@ class LessonController extends Controller
 
         // go to the edit schedule page with the created variables
         return view('pages.schedule_edit', compact('lessons', 'subjects', 'weekdays', 'teachers', 'classrooms'));
+    }
+
+    public function storeOrUpdate(UpdateLessonRequest $request, Lesson $lesson): RedirectResponse
+    {
+        if (! Gate::allows('update-lesson', $lesson)) {
+            abort(403);
+        }
+
+        // check if the lesson already exists
+        $lesson = Lesson::where('start_time', $request->input('start_time'))
+            ->where('day_of_week_id', $request->input('day_of_the_week'))
+            ->where('classroom_id', $request->input('classroom'))
+            ->first();
+
+        // update existing lesson
+        if ($lesson) {
+            $lesson->subject_id = $request->subject;
+            $lesson->user_id = $request->teacher;
+            $lesson->end_time = $request->end_time;
+            $lesson->save();
+        }
+        // create a new lesson
+        else {
+            $lesson = new Lesson;
+            $lesson->subject_id = $request->subject;
+            $lesson->user_id = $request->teacher;
+            $lesson->classroom_id = $request->classroom;
+            $lesson->day_of_week_id = $request->day_of_the_week;
+            $lesson->start_time = $request->start_time;
+            $lesson->end_time = $request->end_time;
+            $lesson->save();
+        
+        }
+        return redirect('update_lesson')->with('success', 'The schedule has been updated successfully!');
     }
 }
