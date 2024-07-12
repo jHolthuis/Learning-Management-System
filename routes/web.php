@@ -4,6 +4,7 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AvailabilityController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\LessonController;
+use App\Models\Role;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,13 +33,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('account_info/{reqUser?}', [AccountController::class, 'show'])->name('account_info');
     Route::get('edit_profile', [AccountController::class, 'edit_profile'])->name('edit_profile');
     
-    Route::put('edit_profile', [AccountController::class, 'update'])->name('update_profile');
+    Route::put('edit_profile', [AccountController::class, 'update'])->name('update_profile')->can('update', Role::class);
     
-    Route::post('store',[AccountController::class,'store'])->name('store_user');
+    Route::post('store',[AccountController::class,'store'])->name('store_user')->can('create', Role::class);
 
     // availability controller
 
-    Route::post('availability', [AvailabilityController::class, 'store'])->name('availability_store');
+    Route::post('availability', [AvailabilityController::class, 'store'])->name('availability_store')->can('create', Role::class);
     Route::get('availability_index', [AvailabilityController::class, 'index'])->name('availability_index');
 
     // lesson controller

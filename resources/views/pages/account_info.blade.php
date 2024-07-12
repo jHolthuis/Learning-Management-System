@@ -47,9 +47,11 @@
             Loan laptop: {{ $user->loan_laptop == 1 ? 'Yes' : 'No' }}
 
             {{-- change profile button --}}
-            <a class="bg-hacklab_green border-none rounded-lg w-40 py-3 mt-6 mb-6 block tranistion ease-in-out
+            @can('viewButton', App\Models\Role::class)
+                <a class="bg-hacklab_green border-none rounded-lg w-40 py-3 mt-6 mb-6 block tranistion ease-in-out
             delay-150 duration-200 hover:bg-sky-400 hover:text-white text-center"
-                href="edit_profile">Edit profile
-            </a>
+                    href="{{ route('edit_profile') }}">Edit profile
+                </a>
+            @endcan
         </p>
     </div>

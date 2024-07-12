@@ -10,7 +10,6 @@ use App\Models\Subject;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 
 
 // the controller for all the lessons in hacklab
@@ -58,37 +57,33 @@ class LessonController extends Controller
         return view('pages.schedule_edit', compact('lessons', 'subjects', 'weekdays', 'teachers', 'classrooms'));
     }
 
-    public function storeOrUpdate(UpdateLessonRequest $request, Lesson $lesson): RedirectResponse
+    public function storeOrUpdate(UpdateLessonRequest $request): RedirectResponse
     {
-        if (! Gate::allows('update-lesson', $lesson)) {
-            abort(403);
-        }
-
         // check if the lesson already exists
-        $lesson = Lesson::where('start_time', $request->input('start_time'))
+        $lessons = Lesson::where('start_time', $request->input('start_time'))
             ->where('day_of_week_id', $request->input('day_of_the_week'))
             ->where('classroom_id', $request->input('classroom'))
             ->first();
 
         // update existing lesson
-        if ($lesson) {
-            $lesson->subject_id = $request->subject;
-            $lesson->user_id = $request->teacher;
-            $lesson->end_time = $request->end_time;
-            $lesson->save();
+        if ($lessons) {
+            $lessons->subject_id = $request->subject;
+            $lessons->user_id = $request->teacher;
+            $lessons->end_time = $request->end_time;
+            $lessons->save();
         }
         // create a new lesson
         else {
-            $lesson = new Lesson;
-            $lesson->subject_id = $request->subject;
-            $lesson->user_id = $request->teacher;
-            $lesson->classroom_id = $request->classroom;
-            $lesson->day_of_week_id = $request->day_of_the_week;
-            $lesson->start_time = $request->start_time;
-            $lesson->end_time = $request->end_time;
-            $lesson->save();
+            $lessons = new Lesson;
+            $lessons->subject_id = $request->subject;
+            $lessons->user_id = $request->teacher;
+            $lessons->classroom_id = $request->classroom;
+            $lessons->day_of_week_id = $request->day_of_the_week;
+            $lessons->start_time = $request->start_time;
+            $lessons->end_time = $request->end_time;
+            $lessons->save();
         
         }
-        return redirect('update_lesson')->with('success', 'The schedule has been updated successfully!');
+        return redirect('schedule')->with('success', 'The schedule has been updated successfully!');
     }
 }

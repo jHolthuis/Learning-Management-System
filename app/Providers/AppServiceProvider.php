@@ -26,7 +26,5 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment('local')) {
             Mail::alwaysTo('info@hacklab.frl');
         }
-
-        Gate::define('update-lesson', [LessonPolicy::class, 'update']);
     }
 }
