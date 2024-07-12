@@ -2,10 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\Role;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
-use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Auth;
 
 class RolePolicy
