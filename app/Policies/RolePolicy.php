@@ -10,6 +10,15 @@ use Illuminate\Support\Facades\Auth;
 
 class RolePolicy
 {
+    // Let admin do what he wants
+
+    public function before(User $user): bool|null
+    {
+        if ($user->isAdministrator()) {
+            return true;
+        }
+        return null;
+    }
     /**
      * Determine whether the user can view the model.
      */

@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
             ClassroomSeeder::class,
             SubjectSeeder::class,
             UserSeeder::class,
-            DayOfTheWeekSeeder::class
+            DayOfTheWeekSeeder::class,
+            AdminUserSeeder::class
         ]);
     }
 }
