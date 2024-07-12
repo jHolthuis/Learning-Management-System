@@ -35,11 +35,11 @@ class RolePolicy
 
     public function viewButton(User $user): bool
     {
-        if (strcspn($_SERVER['REQUEST_URI'], '0123456789') != strlen($_SERVER['REQUEST_URI'])) {
+        if (request('reqUser')?->id){
             return request('reqUser')->id == Auth::user()->id;
-        } else {
-            return $user->id == Auth::user()->id;
         }
+
+        return $user->id == Auth::user()->id;
     }
 
     /**
