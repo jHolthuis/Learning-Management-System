@@ -14,7 +14,7 @@ class RolePolicy
 
     public function before(User $user): bool|null
     {
-        if ($user->isAdministrator()) {
+        if ($user->is_admin) {
             return true;
         }
         return null;
@@ -24,7 +24,7 @@ class RolePolicy
      */
     public function view(User $user): bool
     {
-        return $user->role_id == '3' || $user->role_id == '4';
+        return $user->role_id == '3';
     }
 
     // let teachers & board members fill in their availability

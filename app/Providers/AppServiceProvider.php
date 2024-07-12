@@ -27,10 +27,5 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment('local')) {
             Mail::alwaysTo('info@hacklab.frl');
         }
-        Gate::before(function(User $user, ) {
-            if ($user->isAdministrator()) {
-                return true;
-            }
-        });
     }
 }
