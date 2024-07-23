@@ -2,7 +2,10 @@
 
 namespace App\Models;
 
+use Database\Factories\LessonFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
 
 class Lesson extends Model
 {
@@ -28,5 +31,10 @@ class Lesson extends Model
     public function dayOfTheWeek()
     {
         return $this->belongsTo(DayOfTheWeek::class, 'day_of_week_id');
+    }
+    // factory for testing
+    protected static function newfactory(): Factory
+    {
+        return LessonFactory::new();
     }
 }

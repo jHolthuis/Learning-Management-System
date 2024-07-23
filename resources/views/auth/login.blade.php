@@ -45,4 +45,5 @@
             class="bg-hacklab_green border-none rounded-lg w-40 py-3 block m-4 tranistion ease-in-out delay-150
             duration-200 hover:bg-sky-400 hover:text-white"
             type="submit">Inloggen</button>
+
     </form>
