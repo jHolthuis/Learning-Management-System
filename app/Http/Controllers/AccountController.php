@@ -7,7 +7,6 @@ use App\Http\Requests\Auth\UpdateUserRequest;
 use App\Mail\NewUserCreated;
 use App\Models\User;
 use App\Models\Role;
-use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -15,15 +14,17 @@ use Illuminate\Support\Facades\Mail;
 class AccountController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of all the users.
      */
     public function index()
     {
-    
+        $all_users = User::with('roles.user')->get();
+
+        return view('pages.user_list', compact('all_users'));
     }
 
     // get all the roles from the database
-    public function showRoles(Request $request)
+    public function showRoles()
     {
         $roles_table = Role::all();
 

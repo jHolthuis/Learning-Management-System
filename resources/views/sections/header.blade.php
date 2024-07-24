@@ -32,22 +32,26 @@
                         <a class="{{ request()->is('availability_index') ? 'text-hacklab_green' : 'text-gray-200' }} transition font-bold float-right hover:text-hacklab_green delay-150 ease-in-out
                     hover:-translate-y-1 hover:scale-110"
                             href="{{ route('availability_index') }}">Availability index
-                        @endcan
 
-                        {{-- go to changes page --}}
-                        @can('view', App\Models\Role::class)
-                            <a class="{{ request()->is('make_changes') ? 'text-hacklab_green' : 'text-gray-200' }} transition font-bold float-right hover:text-hacklab_green delay-150 ease-in-out
-                        hover:-translate-y-1 hover:scale-110"
-                                href="{{ route('make_changes') }}">Changes
+                            <a class="{{ request()->is('user_list') ? 'text-hacklab_green' : 'text-gray-200' }} transition font-bold float-right hover:text-hacklab_green delay-150 ease-in-out
+                            hover:-translate-y-1 hover:scale-110"
+                                href="{{ route('user_list') }}">User list
+                            @endcan
 
-                                {{-- go to create a new account page --}}
-                                <a class="{{ request()->is('new_user') ? 'text-hacklab_green' : 'text-gray-200' }} transition font-bold float-right hover:text-hacklab_green delay-150 ease-in-out
-                                hover:-translate-y-1 hover:scale-110"
-                                    href="{{ route('new_user') }}">Create new account
-                                @endcan
+                            {{-- go to changes page --}}
+                            @can('view', App\Models\Role::class)
+                                <a class="{{ request()->is('make_changes') ? 'text-hacklab_green' : 'text-gray-200' }} transition font-bold float-right hover:text-hacklab_green delay-150 ease-in-out
+                                    hover:-translate-y-1 hover:scale-110"
+                                    href="{{ route('make_changes') }}">Changes
 
-                                {{-- go to the home page --}}
-                                <a class="{{ request()->is('/') ? 'text-hacklab_green' : 'text-gray-200' }} transition font-bold float-right hover:text-hacklab_green delay-150 ease-in-out
-                                hover:-translate-y-1 hover:scale-110"
-                                    href="/">Home</a>
+                                    {{-- go to create a new account page --}}
+                                    <a class="{{ request()->is('new_user') ? 'text-hacklab_green' : 'text-gray-200' }} transition font-bold float-right hover:text-hacklab_green delay-150 ease-in-out
+                                    hover:-translate-y-1 hover:scale-110"
+                                        href="{{ route('new_user') }}">Create new account
+                                    @endcan
+
+                                    {{-- go to the home page --}}
+                                    <a class="{{ request()->is('/') ? 'text-hacklab_green' : 'text-gray-200' }} transition font-bold float-right hover:text-hacklab_green delay-150 ease-in-out
+                                        hover:-translate-y-1 hover:scale-110"
+                                        href="/">Home</a>
 </header>

@@ -35,6 +35,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('new_user', [AccountController::class, 'showRoles'])->name('new_user');
     Route::get('account_info/{reqUser?}', [AccountController::class, 'show'])->name('account_info');
     Route::get('edit_profile', [AccountController::class, 'edit_profile'])->name('edit_profile');
+    Route::get('user_list', [AccountController::class, 'index'])->name('user_list');
     
     Route::put('edit_profile', [AccountController::class, 'update'])->name('update_profile')->can('update', Role::class);
     
