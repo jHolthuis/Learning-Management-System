@@ -18,7 +18,7 @@ class AccountController extends Controller
      */
     public function index()
     {
-        $all_users = User::with('roles.user')->get();
+        $all_users = User::with('role')->get();
 
         return view('pages.user_list', compact('all_users'));
     }

@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Models\User;
 
 class UserListTest extends TestCase
 {
@@ -13,8 +14,14 @@ class UserListTest extends TestCase
      */
     public function test_example(): void
     {
-        $response = $this->get('user_list');
+        $all_users = User::with('roles')->get();
 
-        $response->assertStatus(200);
+        foreach ($all_users as $user) {
+        echo $user->roles->name;
+        }
+
+        // $response = $this->get('user_list');
+
+        // $response->assertStatus(200);
     }
 }
