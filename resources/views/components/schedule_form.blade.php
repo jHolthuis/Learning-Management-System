@@ -1,9 +1,13 @@
+<h1 class="text-hacklab_green text-2xl font-display font-bold mt-10 ml-4 mb-6">Change schedule</h1><br>
 {{-- form to change the schedule --}}
-<form class="bg-gray-900/50 ml-16 border-none block w-5/12 h-6/6 pb-1" name="change_schedule_form" method="POST"
+<form class="bg-gray-900/50 ml-4 border-none block w-5/12 h-6/6 pb-1" name="change_schedule_form" method="POST"
     action="{{ route('store_or_update_schedule') }}">
-    <h2 class="text-white text-3xl pl-4 pt-10">Change Schedule</h2><br>
+
+    {{-- header 2 --}}
+    <h2 class="text-white text-3xl pl-4 pt-10 pb-6">New lesson</h2>
 
     @csrf
+
     {{-- select the subject to be filled in --}}
     <label class="text-white ml-4 mb-0">Subject
         <select id="subject_id" name="subject"

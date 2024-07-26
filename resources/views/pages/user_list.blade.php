@@ -21,7 +21,7 @@
     @endif
 
     {{-- headline text --}}
-    <h1 class="text-hacklab_green text-7xl pl-16 pb-14 pt-6">All members of Hacklab</h1>
+    <h1 class="text-hacklab_green text-2xl font-display font-bold mt-10 ml-4 mb-6">All members of Hacklab</h1>
 
     {{-- table class --}}
     <table class=" table bg-gray-900/50 text-gray-50 border-2 border-hacklab_green p-8 ml-4 w-5/12 h-6/6 text-lg">

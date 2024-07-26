@@ -19,7 +19,8 @@
     @endif
 
     {{-- headline for the page --}}
-    <h1 class="text-gray-50 font-display mt-10 ml-4 text-2xl mb-6">Account information for {{ $user->name }}</h1>
+    <h1 class="text-hacklab_green font-bold font-display mt-10 ml-4 text-2xl mb-6">Account information for
+        {{ $user->name }}</h1>
 
     {{-- background layout --}}
     <div class="bg-gray-900/50 text-gray-50 border-none block p-8 ml-4 w-5/12 h-6/6">

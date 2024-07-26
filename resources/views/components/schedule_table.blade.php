@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
 {{-- header --}}
-<h1 class="text-hacklab_green font-bold">Weekly Schedule</h1>
+<h1 class="text-hacklab_green font-bold font-display text-2xl ml-4 mt-10 mb-6">Weekly Schedule</h1>
 {{-- order by classroom and print location --}}
 @foreach ($classrooms as $classroom)
-    <h2 class="text-white mt-8">{{ $classroom->location }}</h2>
+    <h2 class="text-white ml-4 mt-8 mb-2">{{ $classroom->location }}</h2>
     {{-- table class --}}
-    <table class="border-hacklab_green border-2">
+    <table class="border-hacklab_green border-2 ml-4">
         {{-- table headers --}}
         <thead>
             <tr class="text-gray-100 ">

@@ -19,7 +19,7 @@
     @endif
 
     {{-- headline for the page --}}
-    <h1 class="text-gray-50 font-display mt-10 ml-4 text-2xl mb-6">Availability for <x-name> </x-name></h1>
+    <h1 class="text-hacklab_green font-display font-bold mt-10 ml-4 text-2xl mb-6">Availability for <x-name> </x-name></h1>
 
     {{-- form to input the availability for the user --}}
     <form class="bg-gray-900/50 text-gray-50 border-none block p-8 ml-4 w-5/12 h-6/6 text-lg"

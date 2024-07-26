@@ -19,7 +19,7 @@
     @endif
 
     {{-- button to change schedule --}}
-    <h1 class="text-gray-50 font-display mt-10 ml-4 text-2xl mb-6">Change schedule</h1>
+    <h1 class="text-hacklab_green font-display font-bold mt-10 ml-4 text-2xl mb-6">Change schedule</h1>
     <a class="bg-hacklab_green border-none rounded-lg w-52 p-3 my-6 ml-4 block tranistion ease-in-out
     delay-150 duration-200 hover:bg-sky-400 hover:text-white font-bold text-center"
         href="schedule_edit">Change Schedule here

@@ -19,11 +19,11 @@
     @endif
 
     {{-- headline text --}}
-    <h1 class="text-white text-7xl pl-16 pb-14 pt-6">Hacklab</h1>
+    <h1 class="text-hacklab_green font-bold font-display text-2xl mt-10 ml-4 mb-6">Hacklab new account</h1>
 
     {{-- form method and route --}}
-    <form class="bg-gray-900/50 ml-16 border-none block w-5/12 h-6/6 pb-1" name="create_user_form" method="POST"
-        action="{{ route('store_user') }}">
+    <form class="bg-gray-900/50 ml-4 border-none block w-5/12 h-6/6 pb-1" name="create_user_form" method="POST"
+        autocomplete="off" action="{{ route('store_user') }}">
 
         {{-- description for form --}}
         <h2 class="text-white text-3xl pl-4 pt-10">Add new user</h2><br>
@@ -39,6 +39,7 @@
             border-2 border-gray-400 focus:border-none rounded-sm focus:ring-hacklab_green focus:outline-1
             outline-hacklab_green placeholder-gray-400 focus:placeholder-hacklab_green"
             type="text" name="name" id="name" placeholder="Name" string required>
+
 
         {{-- email input field --}}
         <input
