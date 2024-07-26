@@ -8,23 +8,23 @@
     {{-- table class --}}
     <table class="border-hacklab_green border-2">
         {{-- table headers --}}
-        <thead class="border-hacklab_green border-2">
-            <tr class="text-gray-100">
-                <th class='p-3 m-4 text-center'>Time</th>
+        <thead>
+            <tr class="text-gray-100 ">
+                <th class='p-3 m-4 text-center border-hacklab_green border-dashed border-2'>Time</th>
                 @foreach ($days as $day)
                     <th class='p-3 m-4 text-center'>
                         {{ $day->name }}
                     </th>
                 @endforeach
         </thead>
-        <tbody>
+        <tbody class="border-hacklab_green border-2">
             {{-- order by timeslots --}}
             @foreach ($timeslots as $timeslot)
                 @php
                     $lessons = $classroom->lessons->get($timeslot);
                 @endphp
-                <tr class=" text-gray-100">
-                    <td class='p-3 m-4 text-center'>{{ $timeslot }}</td>
+                <tr class=" text-gray-100 border-hacklab_green border-dashed border-2">
+                    <td class='p-3 m-4 text-center border-hacklab_green border-dashed border-2'>{{ $timeslot }}</td>
                     {{-- get the day of the week for every lesson --}}
                     @for ($i = 1; $i <= 5; $i++)
                         <td class='p-3 m-4 text-center'>

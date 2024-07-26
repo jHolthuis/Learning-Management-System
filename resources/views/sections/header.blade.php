@@ -18,12 +18,12 @@
             href="{{ route('account_info') }}">My Account
 
             {{-- go to schedule page --}}
-            <a class="{{ request()->is('scedule') ? 'text-hacklab_green' : 'text-gray-200' }} transition font-bold float-right hover:text-hacklab_green delay-150 ease-in-out
+            <a class="{{ request()->is('schedule') ? 'text-hacklab_green' : 'text-gray-200' }} transition font-bold float-right hover:text-hacklab_green delay-150 ease-in-out
                 hover:-translate-y-1 hover:scale-110"
                 href="{{ route('show_schedule') }}">Schedule
 
                 {{-- go to availability page --}}
-                @can('available', App\Models\Role::class)
+                @can('view', App\Models\Role::class)
                     <a class="{{ request()->is('availability') ? 'text-hacklab_green' : 'text-gray-200' }} transition font-bold float-right hover:text-hacklab_green delay-150 ease-in-out
                     hover:-translate-y-1 hover:scale-110"
                         href="{{ route('availability_input') }}">Availability input
@@ -43,10 +43,12 @@
                                 <a class="{{ request()->is('make_changes') ? 'text-hacklab_green' : 'text-gray-200' }} transition font-bold float-right hover:text-hacklab_green delay-150 ease-in-out
                                     hover:-translate-y-1 hover:scale-110"
                                     href="{{ route('make_changes') }}">Changes
+                                @endcan
 
-                                    {{-- go to create a new account page --}}
+                                {{-- go to create a new account page --}}
+                                @can('addUser', App\Models\Role::class)
                                     <a class="{{ request()->is('new_user') ? 'text-hacklab_green' : 'text-gray-200' }} transition font-bold float-right hover:text-hacklab_green delay-150 ease-in-out
-                                    hover:-translate-y-1 hover:scale-110"
+                                            hover:-translate-y-1 hover:scale-110"
                                         href="{{ route('new_user') }}">Create new account
                                     @endcan
 

@@ -17,16 +17,9 @@ class RolePolicy
         return null;
     }
     /**
-     * Determine whether the user can view the model.
+     * Determine whether the user can view the page.
      */
     public function view(User $user): bool
-    {
-        return $user->role_id == '3';
-    }
-
-    // let teachers & board members fill in their availability
-
-    public function available(User $user): bool
     {
         return $user->role_id == '2' || $user->role_id == '3';
     }
@@ -50,6 +43,11 @@ class RolePolicy
         return $user->role_id == '2' || $user->role_id == '3';
     }
 
+    // only board members can do this
+    public function addUser(User $user): bool
+    {
+        return $user->role_id == '3';
+    }
     /**
      * Determine whether the user can update the model.
      */

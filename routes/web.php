@@ -27,31 +27,32 @@ Route::middleware(['auth'])->group(function () {
 
     // straight to view
     Route::view('/', 'pages.welcome')->name('home');
-    Route::view('availability', 'pages.availability_input')->name('availability_input');
-    Route::view('make_changes', 'pages.make_changes')->name('make_changes');
+    Route::view('availability', 'pages.availability_input')->name('availability_input')->can('view', Role::class);
+    Route::view('make_changes', 'pages.make_changes')->name('make_changes')->can('view', Role::class);
 
     // account controller
 
-    Route::get('new_user', [AccountController::class, 'showRoles'])->name('new_user');
+    Route::get('new_user', [AccountController::class, 'showRoles'])->name('new_user')->can('addUser', Role::class);
     Route::get('account_info/{reqUser?}', [AccountController::class, 'show'])->name('account_info');
     Route::get('edit_profile', [AccountController::class, 'edit_profile'])->name('edit_profile');
-    Route::get('user_list', [AccountController::class, 'index'])->name('user_list');
+    Route::get('user_list', [AccountController::class, 'index'])->name('user_list')->can('view', Role::class);
     
     Route::put('edit_profile', [AccountController::class, 'update'])->name('update_profile')->can('update', Role::class);
     
-    Route::post('store',[AccountController::class,'store'])->name('store_user')->can('create', Role::class);
+    Route::post('store',[AccountController::class,'store'])->name('store_user')->can('addUser', Role::class);
 
     // availability controller
 
+    Route::get('availability_index', [AvailabilityController::class, 'index'])->name('availability_index')->can('view', Role::class);
     Route::post('availability', [AvailabilityController::class, 'store'])->name('availability_store')->can('create', Role::class);
-    Route::get('availability_index', [AvailabilityController::class, 'index'])->name('availability_index');
+    
 
     // lesson controller
 
-    Route::get('schedule_edit', [LessonController::class, "schedule_input"])->name('schedule_input');
+    Route::get('schedule_edit', [LessonController::class, "schedule_input"])->name('schedule_input')->can('view', Role::class);
     Route::get('schedule', [LessonController::class, 'show_schedule'])->name('show_schedule');
     
-    Route::post('new_schedule',[LessonController::class, 'storeOrUpdate'])->name('store_or_update_schedule');
+    Route::post('new_schedule',[LessonController::class, 'storeOrUpdate'])->name('store_or_update_schedule')->can('create', Role::class);
 });
 
 // login controller
