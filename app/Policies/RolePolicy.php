@@ -17,7 +17,7 @@ class RolePolicy
         return null;
     }
     /**
-     * Determine whether the user can view the page.
+     * Determine whether the user is a teacher or a boardmember
      */
     public function view(User $user): bool
     {
@@ -35,14 +35,6 @@ class RolePolicy
         return $user->id == Auth::user()->id;
     }
 
-    /**
-     * Determine whether the user can create models.
-     */
-    public function create(User $user): bool
-    {
-        return $user->role_id == '2' || $user->role_id == '3';
-    }
-
     // only board members can do this
     public function addUser(User $user): bool
     {
@@ -54,5 +46,11 @@ class RolePolicy
     public function update(User $user): bool
     {
         return $user->id == Auth::user()->id;
+    }
+
+    // For all logged in users
+    public function viewAll(User $user): bool
+    {
+        return $user->role_id != null;
     }
 }

@@ -44,7 +44,7 @@ Route::middleware(['auth'])->group(function () {
     // availability controller
 
     Route::get('availability_index', [AvailabilityController::class, 'index'])->name('availability_index')->can('view', Role::class);
-    Route::post('availability', [AvailabilityController::class, 'store'])->name('availability_store')->can('create', Role::class);
+    Route::post('availability', [AvailabilityController::class, 'store'])->name('availability_store')->can('view', Role::class);
     
 
     // lesson controller
@@ -52,7 +52,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('schedule_edit', [LessonController::class, "schedule_input"])->name('schedule_input')->can('view', Role::class);
     Route::get('schedule', [LessonController::class, 'show_schedule'])->name('show_schedule');
     
-    Route::post('new_schedule',[LessonController::class, 'storeOrUpdate'])->name('store_or_update_schedule')->can('create', Role::class);
+    Route::post('new_schedule',[LessonController::class, 'storeOrUpdate'])->name('store_or_update_schedule')->can('view', Role::class);
 });
 
 // login controller

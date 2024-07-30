@@ -46,4 +46,8 @@
             duration-200 hover:bg-sky-400 hover:text-white"
             type="submit">Inloggen</button>
 
+        <div class="text-hacklab_green ml-4">Opzoek naar de hacklab website?<br>
+            <a class="text-hacklab_blue" href="https://hacklab.frl"> klik hier!</a>
+        </div>
     </form>
+@endsection

@@ -7,20 +7,22 @@
         <img src="{{ asset('images/hacklab-logo.svg') }}" alt="logo" style="height: 40px";></a>
 
     {{-- logout button --}}
-    <a class="transition
+    @can('viewAll', App\Models\Role::class)
+        <a class="transition
     font-bold float-right hover:text-hacklab_green delay-150 ease-in-out hover:-translate-y-1
     hover:scale-110 ml-12"
-        href="logout">Logout
+            href="logout">Logout
 
-        {{-- go to account information --}}
-        <a class="{{ request()->is('account_info', 'edit_profile') ? 'text-hacklab_green' : 'text-gray-200' }} transition font-bold float-right hover:text-hacklab_green delay-150 ease-in-out
+            {{-- go to account information --}}
+            <a class="{{ request()->is('account_info', 'edit_profile') ? 'text-hacklab_green' : 'text-gray-200' }} transition font-bold float-right hover:text-hacklab_green delay-150 ease-in-out
         hover:-translate-y-1 hover:scale-110"
-            href="{{ route('account_info') }}">My Account
+                href="{{ route('account_info') }}">My Account
 
-            {{-- go to schedule page --}}
-            <a class="{{ request()->is('schedule') ? 'text-hacklab_green' : 'text-gray-200' }} transition font-bold float-right hover:text-hacklab_green delay-150 ease-in-out
+                {{-- go to schedule page --}}
+                <a class="{{ request()->is('schedule') ? 'text-hacklab_green' : 'text-gray-200' }} transition font-bold float-right hover:text-hacklab_green delay-150 ease-in-out
                 hover:-translate-y-1 hover:scale-110"
-                href="{{ route('show_schedule') }}">Schedule
+                    href="{{ route('show_schedule') }}">Schedule
+                @endcan
 
                 {{-- go to availability page --}}
                 @can('view', App\Models\Role::class)
@@ -53,7 +55,10 @@
                                     @endcan
 
                                     {{-- go to the home page --}}
-                                    <a class="{{ request()->is('/') ? 'text-hacklab_green' : 'text-gray-200' }} transition font-bold float-right hover:text-hacklab_green delay-150 ease-in-out
+                                    @can('viewAll', App\Models\Role::class)
+                                        <a class="{{ request()->is('/') ? 'text-hacklab_green' : 'text-gray-200' }} transition font-bold float-right hover:text-hacklab_green delay-150 ease-in-out
                                         hover:-translate-y-1 hover:scale-110"
-                                        href="/">Home</a>
+                                            href="/">Home</a>
+                                    @endcan
+
 </header>
