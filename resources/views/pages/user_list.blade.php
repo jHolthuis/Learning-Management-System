@@ -70,3 +70,4 @@
             @endforeach
         </tbody>
     </table>
+    @endsection

@@ -56,3 +56,4 @@
             @endcan
         </p>
     </div>
+    @endsection

@@ -31,3 +31,5 @@
     delay-150 duration-200 hover:bg-sky-400 hover:text-white font-bold text-center"
         href="availability">Change availability here
     </a>
+
+@endsection

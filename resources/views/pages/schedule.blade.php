@@ -21,3 +21,5 @@
     {{-- x-link to component page --}}
     <x-schedule_table :classrooms='$classrooms' :days='$days' :timeslots='$timeslots'>
     </x-schedule_table>
+
+@endsection

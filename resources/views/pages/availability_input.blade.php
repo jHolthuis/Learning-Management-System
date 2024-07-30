@@ -58,3 +58,5 @@
             class="btn btn-primary bg-hacklab_green border-none rounded-lg w-40 py-3 ml-52 mb-8 block tranistion ease-in-out
             delay-150 duration-200 hover:bg-sky-400 hover:text-white">Bevestig</button>
     </form>
+
+@endsection
