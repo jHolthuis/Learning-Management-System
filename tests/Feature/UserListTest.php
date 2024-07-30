@@ -9,19 +9,19 @@ use App\Models\User;
 
 class UserListTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * A basic feature test example.
      */
     public function test_example(): void
     {
-        $all_users = User::with('roles')->get();
 
-        foreach ($all_users as $user) {
-        echo $user->roles->name;
-        }
+        $admin = User::factory()->create();
 
-        // $response = $this->get('user_list');
+        $response = $this->actingAs($admin)
+                    ->withSession(['banned' => false])
+                    ->get('/');
 
-        // $response->assertStatus(200);
+        $response;
     }
 }

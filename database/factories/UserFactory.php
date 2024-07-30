@@ -28,7 +28,14 @@ class UserFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
+            'phone_number' => fake()->unique()->phoneNumber(),
+            'date_of_birth' => fake()->date(),
+            'home_town' => fake()->city(),
+            'start_date' => fake()->date(),
             'remember_token' => Str::random(10),
+            'role_id' => '4',
+            'loan_laptop' => '0',
+            'is_admin' => '1',
         ];
     }
 
