@@ -1,6 +1,6 @@
 {{-- header of every page --}}
 <header class="text-gray-200 bg-gray-900 shadow-md fixed left-0 top-0 z-49 w-full p-4 font-display
-    space-x-12">
+    space-x-6">
 
     {{-- hacklab image --}}
     <a class="inline-flex" href="{{ url('/') }}">
@@ -11,49 +11,49 @@
         <a class="transition
     font-bold float-right hover:text-hacklab_green delay-150 ease-in-out hover:-translate-y-1
     hover:scale-110 ml-12"
-            href="logout">Logout
+            href="logout">Uitloggen
 
             {{-- go to account information --}}
             <a class="{{ request()->is('account_info', 'edit_profile') ? 'text-hacklab_green' : 'text-gray-200' }} transition font-bold float-right hover:text-hacklab_green delay-150 ease-in-out
         hover:-translate-y-1 hover:scale-110"
-                href="{{ route('account_info') }}">My Account
+                href="{{ route('account_info') }}">Mijn account
 
                 {{-- go to schedule page --}}
                 <a class="{{ request()->is('schedule') ? 'text-hacklab_green' : 'text-gray-200' }} transition font-bold float-right hover:text-hacklab_green delay-150 ease-in-out
                 hover:-translate-y-1 hover:scale-110"
-                    href="{{ route('show_schedule') }}">Schedule
+                    href="{{ route('show_schedule') }}">Rooster
                 @endcan
 
                 {{-- go to the show availability page --}}
                 @can('view', App\Models\Role::class)
                     <a class="{{ request()->is('availability_index') ? 'text-hacklab_green' : 'text-gray-200' }} transition font-bold float-right hover:text-hacklab_green delay-150 ease-in-out
                         hover:-translate-y-1 hover:scale-110"
-                        href="{{ route('availability_index') }}">My availability
+                        href="{{ route('availability_index') }}">Mijn beschikbaarheid
 
                         <a class="{{ request()->is('user_list') ? 'text-hacklab_green' : 'text-gray-200' }} transition font-bold float-right hover:text-hacklab_green delay-150 ease-in-out
                             hover:-translate-y-1 hover:scale-110"
-                            href="{{ route('user_list') }}">User list
+                            href="{{ route('user_list') }}">Gebruikers lijst
                         @endcan
 
                         {{-- go to changes page --}}
                         @can('view', App\Models\Role::class)
                             <a class="{{ request()->is('make_changes') ? 'text-hacklab_green' : 'text-gray-200' }} transition font-bold float-right hover:text-hacklab_green delay-150 ease-in-out
                                     hover:-translate-y-1 hover:scale-110"
-                                href="{{ route('make_changes') }}">Changes
+                                href="{{ route('make_changes') }}">Veranderingen
                             @endcan
 
                             {{-- go to create a new account page --}}
                             @can('addUser', App\Models\Role::class)
                                 <a class="{{ request()->is('new_user') ? 'text-hacklab_green' : 'text-gray-200' }} transition font-bold float-right hover:text-hacklab_green delay-150 ease-in-out
                                             hover:-translate-y-1 hover:scale-110"
-                                    href="{{ route('new_user') }}">Create new account
+                                    href="{{ route('new_user') }}">Maak een nieuwe account aan
                                 @endcan
 
                                 {{-- go to the home page --}}
                                 @can('viewAll', App\Models\Role::class)
                                     <a class="{{ request()->is('/') ? 'text-hacklab_green' : 'text-gray-200' }} transition font-bold float-right hover:text-hacklab_green delay-150 ease-in-out
                                         hover:-translate-y-1 hover:scale-110"
-                                        href="/">Home</a>
+                                        href="/">Welkom pagina</a>
                                 @endcan
 
 </header>

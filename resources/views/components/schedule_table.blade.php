@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 {{-- header --}}
-<h1 class="text-hacklab_green font-bold font-display text-2xl ml-4 mt-10 mb-6">Weekly Schedule</h1>
+<h1 class="text-hacklab_green font-bold font-display text-2xl ml-4 mt-10 mb-6">Week rooster</h1>
 {{-- order by classroom and print location --}}
 @foreach ($classrooms as $classroom)
     <h2 class="text-white ml-4 mt-8 mb-2">{{ $classroom->location }}</h2>
@@ -10,7 +10,7 @@
         {{-- table headers --}}
         <thead>
             <tr class="text-gray-100 ">
-                <th class='p-3 m-4 text-center border-hacklab_green border-dashed border-2'>Time</th>
+                <th class='p-3 m-4 text-center border-hacklab_green border-dashed border-2'>Tijd</th>
                 @foreach ($days as $day)
                     <th class='p-3 m-4 text-center'>
                         {{ $day->name }}

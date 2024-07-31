@@ -19,7 +19,7 @@
     @endif
 
     {{-- headline for the page --}}
-    <h1 class="text-hacklab_green font-bold font-display mt-10 ml-4 text-2xl mb-6">Account information for
+    <h1 class="text-hacklab_green font-bold font-display mt-10 ml-4 text-2xl mb-6">Gebruikers informatie voor
         {{ $user->name }}</h1>
 
     {{-- background layout --}}
@@ -33,27 +33,27 @@
             @endif
 
             {{-- personal information --}}
-            Name: {{ $user->name }}
+            Naam: {{ $user->name }}
             <br>
             Email: {{ $user->email }}
             <br>
-            Phone: {{ 0 . $user->phone_number }}
+            Telefoon nummer: {{ 0 . $user->phone_number }}
             <br>
-            Date of birth: {{ $user->date_of_birth }}
+            Geboorte datum: {{ $user->date_of_birth }}
             <br>
-            Home town: {{ $user->home_town }}
+            Woonplaats: {{ $user->home_town }}
             <br>
-            Start date: {{ $user->start_date }}
+            Start datum: {{ $user->start_date }}
             <br>
-            Loan laptop: {{ $user->loan_laptop == 1 ? 'Yes' : 'No' }}
+            Leen laptop: {{ $user->loan_laptop == 1 ? 'Yes' : 'No' }}
 
             {{-- change profile button --}}
             @can('viewButton', App\Models\Role::class)
                 <a class="bg-hacklab_green border-none rounded-lg w-40 py-3 mt-6 mb-6 block tranistion ease-in-out
             delay-150 duration-200 hover:bg-sky-400 hover:text-white text-center"
-                    href="{{ route('edit_profile') }}">Edit profile
+                    href="{{ route('edit_profile') }}">Verander gegevens
                 </a>
             @endcan
         </p>
     </div>
-    @endsection
+@endsection
