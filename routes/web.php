@@ -8,6 +8,7 @@ use App\Models\Role;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 
 /*
@@ -79,3 +80,10 @@ Route::post('/email/verification-notification', function (Request $request) {
  
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+// change the locale
+
+Route::get('/locale/{locale}', function ($locale){
+    Session::put('locale', $locale);
+    return redirect()->back();
+})->name('locale');

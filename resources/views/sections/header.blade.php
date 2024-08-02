@@ -6,6 +6,12 @@
     <a class="inline-flex" href="{{ url('/') }}">
         <img src="{{ asset('images/hacklab-logo.svg') }}" alt="logo" style="height: 40px";></a>
 
+    {{-- language flags --}}
+    <a href="{{ route('locale', ['locale' => 'en']) }}" type="button"
+        class="btn btn-primary {{ Session::get('locale') == 'en' ? 'active' : '' }}">English</a>
+    <a href="{{ route('locale', ['locale' => 'nl']) }}" type="button"
+        class="btn btn-primary {{ Session::get('locale') == 'nl' ? 'active' : '' }}">Nederlands</a>
+    </div>
     {{-- logout button --}}
     @can('viewAll', App\Models\Role::class)
         <a class="transition
