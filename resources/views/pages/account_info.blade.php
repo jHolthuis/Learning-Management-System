@@ -4,6 +4,8 @@
 
     {{-- current page for main menu --}}
     <?php
+    use Carbon\Carbon;
+    
     $currentPage = 'account_info';
     ?>
 
@@ -19,7 +21,7 @@
     @endif
 
     {{-- headline for the page --}}
-    <h1 class="text-hacklab_green font-bold font-display mt-10 ml-4 text-2xl mb-6">Gebruikers informatie voor
+    <h1 class="text-hacklab_green font-bold font-display mt-10 ml-4 text-2xl mb-6">{{ __('Gebruikers informatie voor') }}
         {{ $user->name }}</h1>
 
     {{-- background layout --}}
@@ -33,25 +35,25 @@
             @endif
 
             {{-- personal information --}}
-            Naam: {{ $user->name }}
+            {{ __('Naam') }}: {{ $user->name }}
             <br>
-            Email: {{ $user->email }}
+            {{ __('E-mailadres') }}: {{ $user->email }}
             <br>
-            Telefoon nummer: {{ 0 . $user->phone_number }}
+            {{ __('Telefoon nummer') }}: {{ 0 . $user->phone_number }}
             <br>
-            Geboorte datum: {{ $user->date_of_birth }}
+            {{ __('Geboorte datum') }}: {{ Carbon::parse($user->date_of_birth)->format('d-m-Y') }}
             <br>
-            Woonplaats: {{ $user->home_town }}
+            {{ __('Woonplaats') }}: {{ $user->home_town }}
             <br>
-            Start datum: {{ $user->start_date }}
+            {{ __('Start datum') }}: {{ Carbon::parse($user->start_date)->format('d-m-Y') }}
             <br>
-            Leen laptop: {{ $user->loan_laptop == 1 ? 'Yes' : 'No' }}
+            {{ __('Leen laptop') }}: {{ __($user->loan_laptop == 1 ? 'Ja' : 'Nee') }}
 
             {{-- change profile button --}}
             @can('viewButton', App\Models\Role::class)
                 <a class="bg-hacklab_green border-none rounded-lg w-40 py-3 mt-6 mb-6 block tranistion ease-in-out
             delay-150 duration-200 hover:bg-sky-400 hover:text-white text-center"
-                    href="{{ route('edit_profile') }}">Verander gegevens
+                    href="{{ route('edit_profile') }}">{{ __('Verander gegevens') }}
                 </a>
             @endcan
         </p>

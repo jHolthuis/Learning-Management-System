@@ -20,7 +20,8 @@
     @endif
 
     {{-- headline for the page --}}
-    <h1 class="text-hacklab_green font-bold font-display mt-10 ml-4 text-2xl mb-6">Beschikbaarheid voor <x-name> </x-name>
+    <h1 class="text-hacklab_green font-bold font-display mt-10 ml-4 text-2xl mb-6">{{ __('Beschikbaarheid voor') }} <x-name>
+        </x-name>
     </h1>
 
     {{-- table class --}}
@@ -28,9 +29,9 @@
         {{-- table headers --}}
         <thead>
             <tr>
-                <th>Datum</th>
-                <th>Start Tijd</th>
-                <th>Eind Tijd</th>
+                <th>{{ __('Datum') }}</th>
+                <th>{{ __('Start tijd') }}</th>
+                <th>{{ __('Eind tijd') }}</th>
             </tr>
         </thead>
         <tbody>

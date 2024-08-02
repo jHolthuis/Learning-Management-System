@@ -19,17 +19,17 @@
     @endif
 
     {{-- button to change schedule --}}
-    <h1 class="text-gray-300 font-display font-bold mt-10 ml-4 text-2xl mb-6">Verander rooster</h1>
+    <h1 class="text-gray-300 font-display font-bold mt-10 ml-4 text-2xl mb-6">{{ __('Verander rooster') }}</h1>
     <a class="bg-hacklab_green border-none rounded-lg w-52 p-3 my-6 ml-4 block tranistion ease-in-out
     delay-150 duration-200 hover:bg-sky-400 hover:text-white font-bold text-center"
-        href="schedule_edit">Verander rooster hier
+        href="schedule_edit">{{ __('Verander rooster hier') }}
     </a>
 
     {{-- button to change availability --}}
-    <h1 class="text-gray-300 font-display font-bold mt-10 ml-4 text-2xl mb-6">Verander beschikbaarheid</h1>
+    <h1 class="text-gray-300 font-display font-bold mt-10 ml-4 text-2xl mb-6">{{ __('Verander beschikbaarheid') }}</h1>
     <a class="bg-hacklab_green border-none rounded-lg w-52 p-3 my-6 ml-4 block tranistion ease-in-out
     delay-150 duration-200 hover:bg-sky-400 hover:text-white font-bold text-center"
-        href="availability">Verander beschikbaarheid hier
+        href="availability">{{ __('Verander beschikbaarheid hier') }}
     </a>
 
 @endsection
